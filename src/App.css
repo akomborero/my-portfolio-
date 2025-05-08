@@ -54,6 +54,7 @@ a {
   font-size: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  z-index: 1000;
 }
 
 .toggle-btn:hover {
@@ -73,6 +74,8 @@ a {
   width: 200px;
   background-color: var(--sidebar-bg);
   padding-top: 20px;
+  transition: transform 0.3s ease;
+  z-index: 999;
 }
 
 .sidebar ul {
@@ -103,13 +106,11 @@ a {
 /* Responsive Sidebar */
 @media (max-width: 768px) {
   .sidebar {
-    left: -250px;
-    width: 250px;
-    transition: transform 0.3s ease;
+    transform: translateX(-100%);
   }
 
   .sidebar.open {
-    transform: translateX(250px);
+    transform: translateX(0);
   }
 
   .menu-toggle {
@@ -119,22 +120,10 @@ a {
     font-size: 30px;
     color: white;
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
-  }
-
-  .sidebar ul {
-    flex-direction: column;
-    padding-top: 60px;
-  }
-
-  .sidebar li {
-    text-align: center;
-  }
-
-  .main-content {
-    margin-left: 0;
+    z-index: 1000;
   }
 }
 
@@ -142,6 +131,13 @@ a {
 .main-content {
   margin-left: 220px;
   padding: 20px 24px;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
 }
 
 section {
@@ -152,7 +148,8 @@ section p {
   opacity: 0.5;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin-bottom: 20px;
 }
 
@@ -192,24 +189,24 @@ h2 {
 }
 
 .intro-text {
-  font-size: 2.25rem; 
+  font-size: 1.5rem; /* Adjusted to match h3/h4 size */
   font-weight: bold;
-  color: white; 
+  color: white;
   line-height: 1.2;
-  display: flex; 
-  justify-content: center; 
-  gap: 5px; 
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
 .typewriter {
-  color: #3498db; /* Keep the typewriter text color */
+  color: #3498db;
   font-size: inherit; /* Match the size of .intro-text */
   font-weight: inherit; /* Match the weight of .intro-text */
   display: inline-block;
   animation: fadeIn 1s forwards;
   animation-delay: 0.2s;
-  min-width: 200px; /* Reserve space for the typewriter effect */
-  text-align: left; /* Align the text properly */
+  min-width: 200px;
+  text-align: left;
 }
 
 .typewriter::after {
@@ -227,9 +224,70 @@ h2 {
 }
 
 @keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Profile Image */
+.profile-image-container {
+  position: absolute;
+  top: 20px; /* Positioned at the top */
+  right: 20px; /* Positioned to the right */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--primary-color);
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-image:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Contact Icons */
+.contact-info ul {
+  display: flex; /* Aligns icons horizontally */
+  justify-content: center;
+  gap: 20px; /* Space between icons */
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact-info li {
+  display: inline-block;
+}
+
+.contact-info a img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-info a img:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
 }
 
 /* Skills */
@@ -267,26 +325,27 @@ h2 {
 
 /* Experience Section */
 .experience {
-  background-color: var(--bg-dark); /* Use theme variable for background */
-  color: var(--text-light); /* Use theme variable for text */
-  padding: 50px 0; /* Match the padding of other sections */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  padding: 50px 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.light-mode .experience {
-  background-color: var(--bg-light); /* Light theme background */
-  color: var(--text-dark); /* Light theme text */
+  background-color: var(--bg-light);
+  color: var(--text-dark);
 }
 
 .experience .section-text {
   font-size: 18px;
   line-height: 1.6;
-  color: var(--text-muted); /* Use muted text color */
+  color: var(--text-muted);
   opacity: 0.9;
 }
+
 /* Contact Section */
 .contact {
-  padding: 50px 0; /* Match the padding of other sections */
+  padding: 50px 0;
 }
 
 .contact .section-container {
@@ -301,36 +360,16 @@ body.light-mode .experience {
   max-width: 800px;
 }
 
-.contact-description {
-  margin-bottom: 20px;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-muted);
-}
-
-.contact-info ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.contact-info li {
-  display: inline-block;
-  margin: 10px;
-}
-
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  flex: 1;
+  width: 100%;
+  max-width: 500px;
 }
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%; /* Make inputs and textarea stretch to the container */
-  max-width: 500px; /* Limit the width for better alignment */
+  width: 100%;
   padding: 10px;
-  margin: 0; /* Remove margins */
+  margin: 0;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
@@ -365,20 +404,8 @@ body.light-mode .experience {
 .status-message.error {
   color: red;
 }
+
 /* Projects Section */
-.projects.section {
-  padding: 60px 20px;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-  text-align: center;
-}
-
-.projects h1 {
-  font-size: 2.5rem;
-  color: var(--text-light);
-  margin-bottom: 30px;
-}
-
 .projects-list {
   display: flex;
   justify-content: center;
@@ -387,11 +414,12 @@ body.light-mode .experience {
 }
 
 .project-card {
+  width: 100%;
+  max-width: 280px;
   background-color: var(--bg-dark);
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
-  width: 280px;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -428,111 +456,6 @@ body.light-mode .experience {
   color: white;
 }
 
-/* Profile Image */
-.profile-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.profile-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid var(--primary-color);
-  transition: transform 0.3s ease-in-out;
-}
-
-.profile-image:hover {
-  transform: scale(1.1);
-}
-
-/* Additional Responsive Adjustments */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-  }
-
-  .sidebar ul {
-    justify-content: space-around;
-  }
-
-  .section-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .section-container h2 {
-    margin-bottom: 10px;
-  }
-}
-
-/* Nav Hover Animations */
-nav a {
-  display: inline-block;
-  padding: 10px;
-  color: #fff;
-  font-size: 18px;
-  text-transform: uppercase;
-  transition: transform 0.3s ease;
-}
-
-nav a:hover {
-  transform: translateY(-5px);
-}
-
-nav a:active {
-  transform: translateY(0);
-}
-
-nav a:focus-visible {
-  outline: 2px solid var(--primary-color);
-}
-
-.nav-link:hover {
-  color: var(--primary-color);
-}
-
-
-
-.profile-image-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  margin: 0;
-}
-
-.profile-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--primary-color);
-}
-
-/* Responsive Hero Section */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .hero-content h2 {
-    font-size: 1rem;
-  }
-
-  .hero-content h4 {
-    font-size: 1rem;
-  }
-
-  .profile-image {
-    width: 120px;
-    height: 120px;
-  }
-}
 /* Resume Download Button */
 .resume-download {
   margin-top: 20px;
