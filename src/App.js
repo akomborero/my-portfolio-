@@ -196,7 +196,7 @@ function App() {
         {/* Hero Section */}
         <section id="home" className="home section" data-aos="fade-up">
           <div className="hero-content">
-            <h3>Hello, I'm</h3>
+            <h2>Hello, I'm</h2>
             <h1>Makomborero Chidziva</h1>
             <h4 className="intro-text">
               I'm a Passionate{' '}

@@ -186,6 +186,13 @@ h2 {
 /* Hero Section */
 .hero-content {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Makes the hero section cover the entire screen */
+  background-color: var(--bg-dark); /* Optional: Add a background color or image */
+  padding: 20px;
 }
 
 .intro-text {
@@ -234,8 +241,7 @@ h2 {
     opacity: 1;
   }
 }
-
-/* Profile Image */
+/*/* Profile Image */
 .profile-image-container {
   position: absolute;
   top: 20px; /* Positioned at the top */
@@ -259,10 +265,18 @@ h2 {
   transform: scale(1.1);
 }
 
+/* Adjustments for Mobile Screens */
 @media (max-width: 768px) {
+  .profile-image-container {
+    position: relative; /* Adjusted for better placement on smaller screens */
+    top: 10px; /* Reduced spacing for mobile */
+    right: 0; /* Center alignment on mobile */
+    justify-content: center;
+  }
+
   .profile-image {
-    width: 120px;
-    height: 120px;
+    width: 100px; /* Smaller size for mobile */
+    height: 100px; /* Ensure aspect ratio remains consistent */
   }
 }
 
