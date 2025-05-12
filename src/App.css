@@ -195,50 +195,54 @@ h2 {
   padding: 20px;
 }
 
+/* Hero Section Text */
 .intro-text {
-  font-size: 1.5rem; /* Adjusted to match h3/h4 size */
+  font-size: 1.5rem; /* Default font size for larger screens */
   font-weight: bold;
   color: white;
   line-height: 1.2;
   display: flex;
   justify-content: center;
   gap: 5px;
+  text-align: center; /* Ensures text is centered on all screen sizes */
 }
 
 .typewriter {
-  color: #3498db;
-  font-size: inherit; /* Match the size of .intro-text */
-  font-weight: inherit; /* Match the weight of .intro-text */
+  color: var(--primary-color);
+  font-size: inherit; /* Matches the size of .intro-text */
+  font-weight: inherit; /* Inherits font weight */
   display: inline-block;
   animation: fadeIn 1s forwards;
   animation-delay: 0.2s;
   min-width: 200px;
-  text-align: left;
+  text-align: center; /* Centers the typewriter effect */
 }
 
 .typewriter::after {
   content: '|';
   animation: blink 1s infinite;
-  color: #3498db;
+  color: var(--primary-color);
   margin-left: 5px;
 }
 
-/* Fade-in + Blinking cursor Animations */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .intro-text {
+    font-size: 1.2rem; /* Slightly smaller font size for tablets and small screens */
+  }
+
+  .typewriter {
+    font-size: inherit; /* Adjusts with intro-text */
   }
 }
 
-@keyframes blink {
-  0% {
-    opacity: 1;
+@media (max-width: 480px) {
+  .intro-text {
+    font-size: 1rem; /* Smaller font size for very small screens (e.g., smartphones) */
   }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+
+  .typewriter {
+    font-size: inherit; /* Adjusts with intro-text */
   }
 }
 /*/* Profile Image */

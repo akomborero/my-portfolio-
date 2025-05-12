@@ -120,38 +120,46 @@ function App() {
 
   return (
     <div className="App">
-  <Helmet>
-        {/* SEO Metadata */}
-        <title>Makomborero Chidziva - Software Developer Portfolio</title>
-        <meta name="description" content="Portfolio of Makomborero Chidziva, a software developer specializing in web development and software engineering." />
-        <meta name="keywords" content="Portfolio, Software Developer, Web Developer, React, Makomborero Chidziva" />
-        <meta name="author" content="Makomborero Chidziva" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <Helmet>
+  <title>Makomborero Chidziva - Software Developer Portfolio</title>
+  <meta name="description" content="Explore the portfolio of Makomborero Chidziva, a passionate software developer specializing in web development and software engineering." />
+  <meta name="keywords" content="Makomborero Chidziva, Software Developer, Web Developer, React, Portfolio, Software Engineering, Web Development" />
+  <meta name="author" content="Makomborero Chidziva" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        {/* Google Analytics Script */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX');
-          `}
-        </script>
+  {/* Open Graph Metadata */}
+  <meta property="og:title" content="Makomborero Chidziva - Software Developer Portfolio" />
+  <meta property="og:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
+  <meta property="og:image" content="/profile.jpg" />
+  <meta property="og:url" content="https://my-portfolio-1-pink.vercel.app/" />
+  <meta property="og:type" content="website" />
 
-        {/* Open Graph Metadata */}
-        <meta property="og:title" content="Makomborero Chidziva - Software Developer Portfolio" />
-        <meta property="og:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
-        <meta property="og:image" content="/profile.jpg" />
-        <meta property="og:url" content="https://your-portfolio-link.com" />
-        <meta property="og:type" content="website" />
+  {/* Twitter Card Metadata */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Makomborero Chidziva - Software Developer Portfolio" />
+  <meta name="twitter:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
+  <meta name="twitter:image" content="/profile.jpg" />
 
-        {/* Twitter Card Metadata */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Makomborero Chidziva - Software Developer Portfolio" />
-        <meta name="twitter:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
-        <meta name="twitter:image" content="/profile.jpg" />
-      </Helmet>
+  <script type="application/ld+json">
+  {`
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Makomborero Chidziva",
+      "url": "https://my-portfolio-1-pink.vercel.app/",
+      "sameAs": [
+        "https://github.com/akomborero",
+        "https://www.linkedin.com/in/makomborero-chidziva-755659350"
+      ],
+      "jobTitle": "Software Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Uncommon.org"
+      }
+    }
+  `}
+</script>
+</Helmet>
 
 
       {/* Theme Toggle Button */}
@@ -280,8 +288,7 @@ function App() {
     </div>
   </div>
 </section>
-
-        {/* Experience Section */}
+{/* Experience Section */}
         <section id="experience" className="experience section" data-aos="fade-up">
           <div className="section-container">
             <h2>Experience</h2>
@@ -294,10 +301,19 @@ function App() {
                 To strengthen my skills and gain real-world experience, I joined{' '}
                 <strong>Uncommon.org</strong>, a leading tech bootcamp.
               </p>
+              <br></br>
+             
+              <div className="experience-item">
+                <h3>Build with AI Hackathon - Winner</h3>
+                <p className="experience-date">May 2025</p>
+                <p>
+                  My first hackathon, the **'Build with AI' event, was a WIN!** Our team developed a database solution for hospitals focused on enhancing efficiency and data management. In this project, I contributed to both the frontend development for user interaction and the backend development for data handling and logic. We successfully conceptualized, built, and presented our project, **ultimately winning the competition.** This intensive experience in a fast-paced, collaborative environment focused on Artificial Intelligence was invaluable.
+                </p>
+              
+              </div>
             </div>
           </div>
         </section>
-
         {/* Projects Section */}
         <section id="projects" className="projects section" data-aos="fade-up">
           <div className="section-container">
