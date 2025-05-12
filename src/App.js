@@ -120,46 +120,46 @@ function App() {
 
   return (
     <div className="App">
- <Helmet>
-  <title>Makomborero Chidziva - Software Developer Portfolio</title>
-  <meta name="description" content="Explore the portfolio of Makomborero Chidziva, a passionate software developer specializing in web development and software engineering." />
-  <meta name="keywords" content="Makomborero Chidziva, Software Developer, Web Developer, React, Portfolio, Software Engineering, Web Development" />
-  <meta name="author" content="Makomborero Chidziva" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <Helmet>
+        <title>Makomborero Chidziva - Software Developer Portfolio</title>
+        <meta name="description" content="Explore the portfolio of Makomborero Chidziva, a passionate software developer specializing in web development and software engineering." />
+        <meta name="keywords" content="Makomborero Chidziva, Software Developer, Web Developer, React, Portfolio, Software Engineering, Web Development" />
+        <meta name="author" content="Makomborero Chidziva" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  {/* Open Graph Metadata */}
-  <meta property="og:title" content="Makomborero Chidziva - Software Developer Portfolio" />
-  <meta property="og:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
-  <meta property="og:image" content="/profile.jpg" />
-  <meta property="og:url" content="https://my-portfolio-1-pink.vercel.app/" />
-  <meta property="og:type" content="website" />
+        {/* Open Graph Metadata */}
+        <meta property="og:title" content="Makomborero Chidziva - Software Developer Portfolio" />
+        <meta property="og:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
+        <meta property="og:image" content="/profile.jpg" />
+        <meta property="og:url" content="https://my-portfolio-1-pink.vercel.app/" />
+        <meta property="og:type" content="website" />
 
-  {/* Twitter Card Metadata */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Makomborero Chidziva - Software Developer Portfolio" />
-  <meta name="twitter:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
-  <meta name="twitter:image" content="/profile.jpg" />
+        {/* Twitter Card Metadata */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Makomborero Chidziva - Software Developer Portfolio" />
+        <meta name="twitter:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
+        <meta name="twitter:image" content="/profile.jpg" />
 
-  <script type="application/ld+json">
-  {`
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Makomborero Chidziva",
-      "url": "https://my-portfolio-1-pink.vercel.app/",
-      "sameAs": [
-        "https://github.com/akomborero",
-        "https://www.linkedin.com/in/makomborero-chidziva-755659350"
-      ],
-      "jobTitle": "Software Developer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Uncommon.org"
-      }
-    }
-  `}
-</script>
-</Helmet>
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Makomborero Chidziva",
+              "url": "https://my-portfolio-1-pink.vercel.app/",
+              "sameAs": [
+                "https://github.com/akomborero",
+                "https://www.linkedin.com/in/makomborero-chidziva-755659350"
+              ],
+              "jobTitle": "Software Developer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Uncommon.org"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
 
 
       {/* Theme Toggle Button */}
@@ -200,7 +200,6 @@ function App() {
       </div>
 
       <div className="main-content">
-      ...
         {/* Hero Section */}
         <section id="home" className="home section" data-aos="fade-up">
           <div className="hero-content">
@@ -220,17 +219,16 @@ function App() {
             </div>
 
             <div className="resume-download">
-  <a
-    href="/Makomborero_Chidziva_Resume.pdf"
-    download="Makomborero_Chidziva_Resume.pdf"
-    className="resume-btn"
-  >
-    Download Resume
-  </a>
-</div>
+              <a
+                href="/Makomborero_Chidziva_Resume.pdf"
+                download="Makomborero_Chidziva_Resume.pdf"
+                className="resume-btn"
+              >
+                Download Resume
+              </a>
+            </div>
           </div>
         </section>
-...
 
         {/* About Section */}
         <section id="about" className="about section" data-aos="fade-up">
@@ -250,45 +248,46 @@ function App() {
           </div>
         </section>
 
-    <section id="skills" className="skills section" data-aos="fade-up">
-  <div className="section-container">
-    <h2>Technical Skills</h2>
-    <div className="section-text">
-      <p>
-        I have gained experience in various programming languages and technologies,
-        which allow me to build dynamic and responsive web applications.
-        I am proficient in HTML, CSS, and JavaScript for front-end development,
-        as well as Node.js and Express.js for back-end development. I also have
-        experience in Python and Java for general-purpose programming and software development.
-      </p>
-      {/* Skills List */}
-      <div className="skills-list">
-        {[
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "Node.js",
-          "Express.js",
-          "Python",
-          "Java",
-          "MySQL",
-          "MongoDB",
-          "PHP",
-          "TypeScript",
-          "Git & GitHub",
-          "RESTful APIs",
-          "Postman",
-          "React",
-        ].map((skill) => (
-          <button className="skill-btn" key={skill}>
-            {skill}
-          </button>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-{/* Experience Section */}
+        <section id="skills" className="skills section" data-aos="fade-up">
+          <div className="section-container">
+            <h2>Technical Skills</h2>
+            <div className="section-text">
+              <p>
+                I have gained experience in various programming languages and technologies,
+                which allow me to build dynamic and responsive web applications.
+                I am proficient in HTML, CSS, and JavaScript for front-end development,
+                as well as Node.js and Express.js for back-end development. I also have
+                experience in Python and Java for general-purpose programming and software development.
+              </p>
+              {/* Skills List */}
+              <div className="skills-list">
+                {[
+                  "HTML",
+                  "CSS",
+                  "JavaScript",
+                  "Node.js",
+                  "Express.js",
+                  "Python",
+                  "Java",
+                  "MySQL",
+                  "MongoDB",
+                  "PHP",
+                  "TypeScript",
+                  "Git & GitHub",
+                  "RESTful APIs",
+                  "Postman",
+                  "React",
+                ].map((skill) => (
+                  <button className="skill-btn" key={skill}>
+                    {skill}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Experience Section */}
         <section id="experience" className="experience section" data-aos="fade-up">
           <div className="section-container">
             <h2>Experience</h2>
@@ -302,18 +301,30 @@ function App() {
                 <strong>Uncommon.org</strong>, a leading tech bootcamp.
               </p>
               <br></br>
-             
+              {/* Add your Hackathon experience here */}
               <div className="experience-item">
-                <h3>Build with AI Hackathon - Winner</h3>
+                <h3>Build with AI Hackathon - <span className="hackathon-winner">Winner</span></h3>
                 <p className="experience-date">May 2025</p>
                 <p>
-                  My first hackathon, the **'Build with AI' event, was a WIN!** Our team developed a database solution for hospitals focused on enhancing efficiency and data management. In this project, I contributed to both the frontend development for user interaction and the backend development for data handling and logic. We successfully conceptualized, built, and presented our project, **ultimately winning the competition.** This intensive experience in a fast-paced, collaborative environment focused on Artificial Intelligence was invaluable.
+                  First Hackathon - We Won!
+
+                  That powerful line, "AI won't replace you. A person using AI will," truly played out for me at the 'Build with AI' Workshop by GDG Harare. Teaming up with Makomborero Chidziva and Brenda Chinokoro, it was our first hackathon, and we had just two hours to go from idea to prototype. No time to second-guess – just focus, fast thinking, and figuring it out as we went.
+
+                  We didn't just attend; we jumped into the deep end. And we won! 🏆
+
+                  What helped us stand out? We kept things simple and focused, built for a clear need (a database solution for hospitals focused on enhancing efficiency and data management), and used AI to speed up what mattered, not overcomplicate it.
+
+                  This challenge truly pushed us forward, fast, highlighting the importance of showing up to local dev events, collaborating with others who think differently, and building within tight limits – deadlines sharpen decision-making.
+
+                  It's tempting to wait until you feel "ready," but readiness often comes after you leap. This experience taught me invaluable lessons about teamwork, rapid iteration, and focused execution under pressure.
                 </p>
-              
+                {/* Optionally, you could still add a line about technologies used */}
+                {/* <p className="technologies-used">Technologies: [Mention key technologies]</p> */}
               </div>
             </div>
           </div>
         </section>
+
         {/* Projects Section */}
         <section id="projects" className="projects section" data-aos="fade-up">
           <div className="section-container">
