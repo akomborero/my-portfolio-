@@ -308,7 +308,7 @@ function App() {
                 <p>
                   First Hackathon - We Won!
 
-                  That powerful line, "AI won't replace you. A person using AI will," truly played out for me at the 'Build with AI' Workshop by GDG Harare. Teaming up with Makomborero Chidziva and Brenda Chinokoro, it was our first hackathon, and we had just two hours to go from idea to prototype. No time to second-guess – just focus, fast thinking, and figuring it out as we went.
+                  That powerful line, "AI won't replace you. A person using AI will," truly played out for me at the 'Build with AI' Workshop by GDG Harare. Teaming up with Tapiwa Gombarume and Brenda Chinokoro, it was our first hackathon, and we had just two hours to go from idea to prototype. No time to second-guess – just focus, fast thinking, and figuring it out as we went.
 
                   We didn't just attend; we jumped into the deep end. And we won! 🏆
 
