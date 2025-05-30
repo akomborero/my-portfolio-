@@ -11,10 +11,52 @@ const EMAILJS_SERVICE_ID = 'gmail';
 const EMAILJS_TEMPLATE_ID = 'template_tpjs13f';
 const EMAILJS_USER_ID = 'V25OKCvHcTET5iX5K';
 
+// Social Links Component
+const SocialLinks = () => {
+  const socialLinks = [
+    {
+      name: 'GitHub',
+      url: 'https://github.com/akomborero',
+      icon: '/github-logo.png'
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/makomborero-chidziva-755659350',
+      icon: '/linkedin-logo.png'
+    },
+    {
+      name: 'Email',
+      url: 'mailto:makomborerichidzviva@gmail.com',
+      icon: '/email-logo.png'
+    }
+  ];
+
+  return (
+    <div className="social-links">
+      {socialLinks.map((link) => (
+        <a
+          key={link.name}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={link.name}
+        >
+          <img 
+            src={link.icon} 
+            alt={link.name} 
+            width="30" 
+            height="30" 
+          />
+        </a>
+      ))}
+    </div>
+  );
+};
+
 function App() {
   const [activeLink, setActiveLink] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState('dark'); // Manage theme state
+  const [theme, setTheme] = useState('dark');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,10 +67,10 @@ function App() {
 
   const { text } = useTypewriter(
     ['Web Developer', 'Software Engineer', 'Tech Enthusiast'],
-    150, // typing speed
-    100, // deleting speed
-    1000, // pause duration
-    true // loop
+    150,
+    100,
+    1000,
+    true
   );
 
   useEffect(() => {
@@ -57,12 +99,11 @@ function App() {
       const timeout = setTimeout(() => {
         setStatusMessage('');
       }, 5000);
-      return () => clearTimeout(timeout); // Clean up timeout
+      return () => clearTimeout(timeout);
     }
   }, [statusMessage]);
 
   useEffect(() => {
-    // Apply the chosen theme to the body class
     document.body.className = theme === 'dark' ? 'dark-mode' : 'light-mode';
   }, [theme]);
 
@@ -127,14 +168,12 @@ function App() {
         <meta name="author" content="Makomborero Chidziva" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        {/* Open Graph Metadata */}
         <meta property="og:title" content="Makomborero Chidziva - Software Developer Portfolio" />
         <meta property="og:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
         <meta property="og:image" content="/profile.jpg" />
         <meta property="og:url" content="https://my-portfolio-1-pink.vercel.app/" />
         <meta property="og:type" content="website" />
 
-        {/* Twitter Card Metadata */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Makomborero Chidziva - Software Developer Portfolio" />
         <meta name="twitter:description" content="Portfolio of Makomborero Chidziva, showcasing projects, skills, and experience." />
@@ -161,8 +200,6 @@ function App() {
         </script>
       </Helmet>
 
-
-      {/* Theme Toggle Button */}
       <button
         className="toggle-btn"
         onClick={toggleTheme}
@@ -171,7 +208,6 @@ function App() {
         {theme === 'dark' ? '☀️' : '🌙'}
       </button>
 
-      {/* Menu Toggle Button */}
       <button
         className="menu-toggle"
         onClick={toggleMenu}
@@ -180,30 +216,71 @@ function App() {
         {menuOpen ? '✖' : '☰'}
       </button>
 
-      {/* Sidebar */}
-      <div className={`sidebar ${menuOpen ? 'open' : ''}`}>
-        <ul>
-          {['home', 'about', 'skills', 'experience', 'projects', 'contact'].map(
-            (section) => (
-              <li key={section}>
+      <div className={`sidebar ${menuOpen ? 'open' : ''}`} id="sidebar">
+        <div className="sidebar-header"></div>
+        <nav aria-label="Main navigation">
+          <ul>
+            {[
+              { id: 'home', icon: '🏠', label: 'Home' },
+              { id: 'about', icon: '👤', label: 'About' },
+              { id: 'skills', icon: '💻', label: 'Skills' },
+              { id: 'experience', icon: '📈', label: 'Experience' },
+              { id: 'projects', icon: '📂', label: 'Projects' },
+              { id: 'contact', icon: '✉️', label: 'Contact' }
+            ].map((item) => (
+              <li key={item.id}>
                 <a
-                  href={`#${section}`}
-                  className={activeLink === section ? 'active' : ''}
-                  onClick={() => handleLinkClick(section)}
+                  href={`#${item.id}`}
+                  className={activeLink === item.id ? 'active' : ''}
+                  onClick={() => handleLinkClick(item.id)}
+                  aria-current={activeLink === item.id ? "page" : undefined}
                 >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                  <span className="sidebar-icon" aria-hidden="true">{item.icon}</span>
+                  <span className="sidebar-link-text">{item.label}</span>
                 </a>
               </li>
-            )
-          )}
-        </ul>
+            ))}
+          </ul>
+        </nav>
+        <div className="sidebar-footer">
+          <div className="social-links">
+            <a href="https://github.com/akomborero" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              GitHub
+            </a>
+            <span> | </span>
+            <a href="https://www.linkedin.com/in/makomborero-chidziva-755659350" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              LinkedIn
+            </a>
+          </div>
+          <p className="copyright">© {new Date().getFullYear()} Makomborero</p>
+        </div>
       </div>
 
+      {menuOpen && (
+        <div 
+          className="sidebar-overlay" 
+          onClick={toggleMenu}
+          role="button"
+          aria-label="Close menu"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
+        />
+      )}
+
+      <button
+        className="menu-toggle"
+        onClick={toggleMenu}
+        aria-expanded={menuOpen}
+        aria-label="Toggle navigation menu"
+        aria-controls="sidebar"
+      >
+        {menuOpen ? '✕' : '☰'}
+      </button>
+
       <div className="main-content">
-        {/* Hero Section */}
         <section id="home" className="home section" data-aos="fade-up">
           <div className="hero-content">
-            <h2>Hello, I'm</h2>
+            <h3>Hello, I'm</h3>
             <h1>Makomborero Chidziva</h1>
             <h4 className="intro-text">
               I'm a Passionate{' '}
@@ -214,10 +291,16 @@ function App() {
                 {text}
               </span>
             </h4>
-            <div className="profile-image-container">
-              <img src="/profile.jpg" alt="Profile" className="profile-image" />
+            <div className="hero-profile-container">
+              <img 
+                src="/profile.jpg" 
+                alt="Makomborero Chidziva" 
+                className="hero-profile-image" 
+                loading="lazy"
+                width="120"
+                height="120"
+              />
             </div>
-
             <div className="resume-download">
               <a
                 href="/Makomborero_Chidziva_Resume.pdf"
@@ -230,17 +313,30 @@ function App() {
           </div>
         </section>
 
-        {/* About Section */}
         <section id="about" className="about section" data-aos="fade-up">
           <div className="section-container">
             <h2>About Me</h2>
             <div className="about-content">
-              <div className="section-text">
+              <div className="profile-image-wrapper">
+                <div className="profile-image-container">
+                  <img
+                    src="/profile.jpg"
+                    alt="Makomborero Chidziva"
+                    className="profile-image"
+                    loading="lazy"
+                    width="300"
+                    height="300"
+                  />
+                  <div className="profile-image-border"></div>
+                </div>
+              </div>
+              
+              <div className="about-text">
                 <p>
                   Hi, I'm Makomborero Chidziva, a passionate software engineer
                   who loves solving problems through code. Besides coding, I
                   love to watch football and play it in my free time. I'm also
-                  interested in tech innovation, AI, and machine learning.
+                  interested in tech innovation, AI, and Data science.
                   Always eager to learn and take on new challenges.
                 </p>
               </div>
@@ -259,7 +355,6 @@ function App() {
                 as well as Node.js and Express.js for back-end development. I also have
                 experience in Python and Java for general-purpose programming and software development.
               </p>
-              {/* Skills List */}
               <div className="skills-list">
                 {[
                   "HTML",
@@ -287,7 +382,6 @@ function App() {
           </div>
         </section>
 
-        {/* Experience Section */}
         <section id="experience" className="experience section" data-aos="fade-up">
           <div className="section-container">
             <h2>Experience</h2>
@@ -301,68 +395,82 @@ function App() {
                 <strong>Uncommon.org</strong>, a leading tech bootcamp.
               </p>
               <br></br>
-              {/* Add your Hackathon experience here */}
               <div className="experience-item">
                 <h3>Build with AI Hackathon - <span className="hackathon-winner">Winner</span></h3>
                 <p className="experience-date">May 2025</p>
                 <p>
                   First Hackathon - We Won!
-
                   That powerful line, "AI won't replace you. A person using AI will," truly played out for me at the 'Build with AI' Workshop by GDG Harare. Teaming up with Tapiwa Gombarume and Brenda Chinokoro, it was our first hackathon, and we had just two hours to go from idea to prototype. No time to second-guess – just focus, fast thinking, and figuring it out as we went.
-
                   We didn't just attend; we jumped into the deep end. And we won! 🏆
-
                   What helped us stand out? We kept things simple and focused, built for a clear need (a database solution for hospitals focused on enhancing efficiency and data management), and used AI to speed up what mattered, not overcomplicate it.
-
                   This challenge truly pushed us forward, fast, highlighting the importance of showing up to local dev events, collaborating with others who think differently, and building within tight limits – deadlines sharpen decision-making.
-
                   It's tempting to wait until you feel "ready," but readiness often comes after you leap. This experience taught me invaluable lessons about teamwork, rapid iteration, and focused execution under pressure.
                 </p>
-                {/* Optionally, you could still add a line about technologies used */}
-                {/* <p className="technologies-used">Technologies: [Mention key technologies]</p> */}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Projects Section */}
         <section id="projects" className="projects section" data-aos="fade-up">
           <div className="section-container">
             <h2>Projects</h2>
             <div className="projects-list">
               <div className="project-card">
-                <h3>Payslip Generator</h3>
-                <p>
-                  A Python tool that reads employee data from Excel, calculates net
-                  salaries, generates PDFs, and emails payslips.
-                </p>
-                <a
-                  href="https://github.com/akomborero/payslip-generator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Project
-                </a>
+                <div className="project-image-container">
+                 
+                </div>
+                <div className="project-details">
+                  <h3>Payslip Generator</h3>
+                  <p className="project-description">
+                    A Python tool that reads employee data from Excel, calculates net
+                    salaries, generates PDFs, and emails payslips.
+                  </p>
+                  <div className="project-tech">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>PDF Generation</span>
+                  </div>
+                  <div className="project-links">
+                    <a
+                      href="https://github.com/akomborero/payslip-generator"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Code
+                    </a>
+                  </div>
+                </div>
               </div>
               <div className="project-card">
-                <h3>Web Scraper & Data Aggregator</h3>
-                <p>
-                  Scrapes job data from VacancyMail, saves the latest jobs into CSV, and
-                  automates the process using `schedule`.
-                </p>
-                <a
-                  href="https://github.com/akomborero/Scrap_job-project"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Project
-                </a>
+                <div className="project-image-container">
+                
+                </div>
+                <div className="project-details">
+                  <h3>Web Scraper & Data Aggregator</h3>
+                  <p className="project-description">
+                    Scrapes job data from VacancyMail, saves the latest jobs into CSV, and
+                    automates the process using `schedule`.
+                  </p>
+                  <div className="project-tech">
+                    <span>Python</span>
+                    <span>Web Scraping</span>
+                    <span>Automation</span>
+                  </div>
+                  <div className="project-links">
+                    <a
+                      href="https://github.com/akomborero/Scrap_job-project"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Code
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Contact Section */}
         <section id="contact" className="contact section" data-aos="fade-up">
           <div className="section-container">
             <h2>Contact</h2>
@@ -374,48 +482,7 @@ function App() {
                 simply say hello, feel free to reach out!
               </p>
               <div className="contact-info">
-                <ul>
-                  <li>
-                    <a
-                      href="mailto:makomborerichidzviva@gmail.com"
-                      title="Send me an email"
-                    >
-                      <img
-                        src="/email-logo.png"
-                        alt="Email"
-                        style={{ width: '30px', height: '30px' }}
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://github.com/akomborero"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Visit my GitHub profile"
-                    >
-                      <img
-                        src="/github-logo.png"
-                        alt="GitHub"
-                        style={{ width: '30px', height: '30px' }}
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.linkedin.com/in/makomborero-chidziva-755659350"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Connect with me on LinkedIn"
-                    >
-                      <img
-                        src="/linkedin-logo.png"
-                        alt="LinkedIn"
-                        style={{ width: '30px', height: '30px' }}
-                      />
-                    </a>
-                  </li>
-                </ul>
+                <SocialLinks />
               </div>
             </div>
             <form className="contact-form" onSubmit={handleSubmit}>
