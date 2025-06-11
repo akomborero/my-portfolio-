@@ -217,43 +217,27 @@ function App() {
       </button>
 
       <div className={`sidebar ${menuOpen ? 'open' : ''}`} id="sidebar">
-        <div className="sidebar-header"></div>
-        <nav aria-label="Main navigation">
-          <ul>
-            {[
-              { id: 'home', icon: '🏠', label: 'Home' },
-              { id: 'about', icon: '👤', label: 'About' },
-              { id: 'skills', icon: '💻', label: 'Skills' },
-              { id: 'experience', icon: '📈', label: 'Experience' },
-              { id: 'projects', icon: '📂', label: 'Projects' },
-              { id: 'contact', icon: '✉️', label: 'Contact' }
-            ].map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className={activeLink === item.id ? 'active' : ''}
-                  onClick={() => handleLinkClick(item.id)}
-                  aria-current={activeLink === item.id ? "page" : undefined}
-                >
-                  <span className="sidebar-icon" aria-hidden="true">{item.icon}</span>
-                  <span className="sidebar-link-text">{item.label}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="sidebar-footer">
-          <div className="social-links">
-            <a href="https://github.com/akomborero" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              GitHub
-            </a>
-            <span> | </span>
-            <a href="https://www.linkedin.com/in/makomborero-chidziva-755659350" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              LinkedIn
-            </a>
-          </div>
-          <p className="copyright">© {new Date().getFullYear()} Makomborero</p>
-        </div>
+      <div className="text-sidebar">
+  <div className="sidebar-header">
+    
+  </div>
+  <div className="sidebar-links">
+    {['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
+      <div 
+        key={item.toLowerCase()}
+        className={`sidebar-link ${activeLink === item.toLowerCase() ? 'active' : ''}`}
+        onClick={() => handleLinkClick(item.toLowerCase())}
+      >
+        {item}
+      </div>
+    ))}
+  </div>
+  <div className="sidebar-footer">
+    <SocialLinks />
+    
+  </div>
+</div>
+    
       </div>
 
       {menuOpen && (
