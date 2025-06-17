@@ -1,0 +1,37 @@
+.experience {
+  padding: 6rem 0;
+}
+
+.sectionContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionText {
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+.experienceItem {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--dark-card);
+  border-radius: 4px;
+}
+
+.experienceItem h3 {
+  color: var(--light-slate);
+  margin-bottom: 0.5rem;
+}
+
+.hackathonWinner {
+  color: var(--teal-accent);
+}
+
+.experienceDate {
+  color: var(--teal-accent);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}

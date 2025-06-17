@@ -1,0 +1,12 @@
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.socialLinks a {
+  transition: var(--transition);
+}
+
+.socialLinks a:hover {
+  transform: translateY(-3px);
+}

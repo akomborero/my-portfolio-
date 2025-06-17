@@ -1,0 +1,56 @@
+.about {
+  padding: 6rem 0;
+}
+
+.sectionContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  color: var(--light-slate);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 300px;
+  height: 1px;
+  background-color: var(--slate);
+  opacity: 0.2;
+  bottom: -15px;
+  left: 0;
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+
+
+
+
+
+
+.aboutText {
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .aboutContent {
+    grid-template-columns: 1fr;
+  }
+  
+  .profileImageContainer {
+    margin: 0 auto;
+  }
+}
