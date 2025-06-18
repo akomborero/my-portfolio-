@@ -11,10 +11,41 @@ const EMAILJS_SERVICE_ID = 'gmail';
 const EMAILJS_TEMPLATE_ID = 'template_tpjs13f';
 const EMAILJS_USER_ID = 'V25OKCvHcTET5iX5K';
 
+// Minimal emoji icons for each section
+const navIcons = {
+  about: '👤',
+  skills: '🛠️',
+  projects: '📁',
+  contact: '✉️',
+};
+
+// Social links defined directly in this file
+const socialLinks = [
+  {
+    name: "GitHub",
+    url: "https://github.com/akomborero",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/makomborero",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
+  },
+  {
+    name: "Instagram",
+    url: "https://instagram.com/your_instagram_username", // change to your handle!
+    icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg",
+  },
+  {
+    name: "Email",
+    url: "mailto:youraddress@gmail.com", // change to your email!
+    icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg",
+  },
+];
+
 function App() {
-    // Initial activeLink set to 'about' since 'home' is removed
     const [activeLink, setActiveLink] = useState('about');
-    const [menuOpen, setMenuOpen] = useState(false); // For mobile hamburger menu
+    const [menuOpen, setMenuOpen] = useState(false);
     const [theme, setTheme] = useState('dark');
     const [formData, setFormData] = useState({
         name: '',
@@ -24,27 +55,23 @@ function App() {
     const [statusMessage, setStatusMessage] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    // Refs for each section to observe their visibility
     const aboutRef = useRef(null);
     const skillsRef = useRef(null);
-
     const projectsRef = useRef(null);
     const contactRef = useRef(null);
 
-    // Use useMemo to ensure the sections array is only created once
     const sections = useMemo(() => [
-        { id: 'ABOUT', ref: aboutRef }, // Changed to lowercase to match common practice and potential href values
-        { id: 'SKILS', ref: skillsRef }, // Changed to lowercase
-
-        { id: 'PROJECTS', ref: projectsRef }, // Changed to lowercase
-        { id: 'CONTACT', ref: contactRef }, // Changed to lowercase
+        { id: 'about', ref: aboutRef },
+        { id: 'skills', ref: skillsRef },
+        { id: 'projects', ref: projectsRef },
+        { id: 'contact', ref: contactRef },
     ], [aboutRef, skillsRef, projectsRef, contactRef]);
 
-    // Initialize AOS and IntersectionObserver for active link highlighting
+    // Scrollspy-like effect for highlighting nav
     useEffect(() => {
-        AOS.init({ duration: 1000, once: true }); // Added `once: true` to make animations trigger only once
+        AOS.init({ duration: 1000, once: true });
 
-        const observerOptions = { root: null, threshold: 0.5 }; // Observe when 50% of section is visible
+        const observerOptions = { root: null, threshold: 0.5 };
 
         const observerCallback = (entries) => {
             entries.forEach((entry) => {
@@ -62,7 +89,6 @@ function App() {
             }
         });
 
-        // Cleanup function for IntersectionObserver
         return () => {
             sections.forEach(section => {
                 if (section.ref.current) {
@@ -70,9 +96,8 @@ function App() {
                 }
             });
         };
-    }, [sections]); // Dependency on sections ensures observer is set up correctly
+    }, [sections]);
 
-    // Effect for status message timeout
     useEffect(() => {
         if (statusMessage) {
             const timeout = setTimeout(() => {
@@ -82,24 +107,19 @@ function App() {
         }
     }, [statusMessage]);
 
-    // Effect for theme class on body
     useEffect(() => {
-        // Load theme from localStorage on initial mount
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             setTheme(savedTheme);
         } else {
-            // Default to dark if no theme saved
             setTheme('dark');
         }
         document.body.className = theme === 'dark' ? 'dark-mode' : 'light-mode';
-    }, [theme]); // Only runs when theme state changes
+    }, [theme]);
 
     const handleLinkClick = (linkId) => {
         setActiveLink(linkId);
-        // This is handled by the scrollIntoView in the onClick handler directly,
-        // but keeping it here for consistency if you modify nav logic.
-        setMenuOpen(false); // Close menu on link click for mobile
+        setMenuOpen(false);
     };
 
     const toggleMenu = () => {
@@ -143,24 +163,72 @@ function App() {
         }
     };
 
-    // Social links data (moved here for direct use in JSX)
-    const socialLinksData = [
-        {
-            name: 'GitHub',
-            url: 'https://github.com/akomborero',
-            icon: '/github-logo.png'
-        },
-        {
-            name: 'LinkedIn',
-            url: 'https://www.linkedin.com/in/makomborero-chidziva-755659350',
-            icon: '/linkedin-logo.png'
-        },
-        {
-            name: 'Email',
-            url: 'mailto:makomborerichidzviva@gmail.com',
-            icon: '/email-logo.png'
-        }
-    ];
+
+
+const projects = [
+  {
+    title: "Payslip Generator",
+    description: "An app to generate professional payslips instantly from employee data. Export as PDF or email directly.",
+    github: "https://github.com/akomborero/payslip-generator",
+    demo: "https://payslip-generator-akomborero.vercel.app/",
+    tech: ["React", "Node.js", "Express", "PDFKit"],
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?fit=crop&w=400&q=80"
+  },
+  {
+    title: "WebScraper",
+    description: "Fetch, parse, and analyze website data automatically for reporting and research purposes.",
+    github: "https://github.com/akomborero/webscraper",
+    demo: "", // No live demo, arrow will link to GitHub
+    tech: ["Python", "BeautifulSoup", "Requests"],
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80"
+  },
+];
+
+const GithubIcon = () => (
+  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.41 7.84 10.94.57.11.78-.25.78-.56 0-.27-.01-1.17-.01-2.12-3.19.69-3.87-1.37-3.87-1.37-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.88 10.88 0 012.87-.39c.97.01 1.94.13 2.87.39 2.18-1.49 3.14-1.18 3.14-1.18.62 1.58.23 2.75.11 3.04.73.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.24 5.68.41.36.77 1.07.77 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.79.56C20.71 21.42 24 17.12 24 12.02 24 5.74 18.27.5 12 .5z" />
+  </svg>
+);
+
+const ExternalLinkIcon = () => (
+  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M14 3v2h3.59L10 12.59l1.41 1.41L19 6.41V10h2V3h-7zm-4 3H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-5h-2v5H5V8h5V6z" />
+  </svg>
+);
+
+
+const skills = [
+  {
+    name: "HTML5",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    description:
+      "I use HTML5 to structure web pages and create semantic, accessible layouts as the foundation for all my frontend projects.",
+  },
+  {
+    name: "CSS3",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    description:
+      "CSS3 helps me style websites, implement responsive designs, and add modern visual effects using Flexbox, Grid, and animations.",
+  },
+  {
+    name: "JavaScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    description:
+      "JavaScript enables me to make web pages interactive, handle dynamic content, and build powerful client-side applications.",
+  },
+  {
+    name: "React",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    description:
+      "I use React to build fast, reusable, and scalable user interfaces by leveraging components, hooks, and state management.",
+  },
+  {
+    name: "Python",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    description:
+      "Python is my go-to for backend development, data analysis, and scripting thanks to its readability and rich ecosystem.",
+  },
+];
 
     return (
         <div className="App">
@@ -203,16 +271,7 @@ function App() {
                 </script>
             </Helmet>
 
-            {/* Theme Toggle Button (Top Right, always visible) */}
-            <button
-                className="toggle-btn"
-                onClick={toggleTheme}
-                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            >
-                {theme === 'dark' ? '☀️' : '🌙'}
-            </button>
-
-            {/* Mobile Menu Toggle Button (Hamburger icon) */}
+            {/* Mobile Menu Toggle */}
             <button
                 className={`menu-toggle ${menuOpen ? 'open' : ''}`}
                 onClick={toggleMenu}
@@ -227,13 +286,13 @@ function App() {
 
             {/* Sidebar / Left-aligned Intro & Navigation Block */}
             <div className={`left-intro-nav ${menuOpen ? 'open' : ''}`} id="sidebar">
-                {/* Overlay for mobile sidebar */}
                 {menuOpen && <div className="sidebar-overlay" onClick={toggleMenu}></div>}
 
                 <div className="profile-badge">
                     <h3>Makomborero Chidziva</h3>
+                    <h3>Full Stack Developer</h3>
                     <p className="short-bio">
-                        I'm a full-stack developer who builds robust and scalable web applications.
+                        I'm a passionate developer building robust and scalable web applications, always eager to learn and collaborate.
                     </p>
                     <div className="intro-typewriter">
                         <Typewriter
@@ -248,67 +307,87 @@ function App() {
                     </div>
                 </div>
 
+                {/* MAIN NAVIGATION WITH ICONS */}
                 <nav className="main-nav-links">
-                    {sections.map((section) => (
-                        <a
-                            key={section.id}
-                            href={`#${section.id}`}
-                            className={activeLink === section.id ? 'active' : ''}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                document.getElementById(section.id).scrollIntoView({ behavior: 'smooth' });
-                                handleLinkClick(section.id);
-                            }}
-                        >
-                            <span className="link-text">{section.id.charAt(0).toUpperCase() + section.id.slice(1)}</span>
-                            <span className="link-arrow">→</span> {/* Arrow icon */}
-                        </a>
-                    ))}
+                  {sections.map(section => (
+                    <a
+                      key={section.id}
+                      href={`#${section.id}`}
+                      className={activeLink === section.id ? 'active' : ''}
+                      onClick={e => {
+                        e.preventDefault();
+                        document.getElementById(section.id).scrollIntoView({ behavior: 'smooth' });
+                        handleLinkClick(section.id);
+                      }}
+                    >
+                      <span className="nav-dash" aria-hidden="true"></span>
+                      <span className="link-text">
+                        {section.id.charAt(0).toUpperCase() + section.id.slice(1)}
+                      </span>
+                    </a>
+                  ))}
                 </nav>
-
-                {/* Social Links and Copyright are now directly within the left-intro-nav and will align via its flex properties */}
                 <div className="social-links-main">
-                    {socialLinksData.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={link.name}
-                        >
-                            <img
-                                src={link.icon}
-                                alt={link.name}
-                                width="28"
-                                height="28"
-                            />
-                        </a>
-                    ))}
+                  {socialLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.name}
+                    >
+                      <img
+                        src={link.icon}
+                        alt={link.name}
+                        width="28"
+                        height="28"
+                      />
+                    </a>
+                  ))}
                 </div>
-                <p className="copyright">&copy; {new Date().getFullYear()} Makomborero Chidziva</p>
             </div>
-
 
             {/* Main Content Area */}
             <main className="main-content">
                 <section id="about" ref={aboutRef} className="about section" data-aos="fade-up">
                     <div className="section-container">
                         <div className="about-content">
-                            <div className="profile-image-wrapper" data-aos="fade-right" data-aos-delay="200"> {/* Added AOS to image */}
-                               
-                            </div>
-
-                            <div className="about-text" data-aos="fade-left" data-aos-delay="400"> {/* Added AOS to text */}
-<p>
-    Hello! I'm Makomborero, a passionate and driven software developer based in Harare, Zimbabwe. My journey into programming began with a fascination for how digital solutions simplify complex problems and create impactful experiences. I thrive on building elegant, efficient, and scalable applications that solve real-world challenges, whether crafting robust backend systems, designing intuitive user interfaces, or optimizing performance. My commitment extends beyond just writing code; I strive to understand underlying needs and deliver solutions that truly make a difference. Currently, I'm enhancing my skills as an enrolled student in the **uncommon.org bootcamp**, where I'm gaining advanced knowledge and practical experience. I'm also proud to have been a **hackathon winner**, a testament to my problem-solving abilities and rapid prototyping skills under pressure. When I'm not coding, you can find me exploring the latest tech trends or contributing to open-source projects. I'm always looking for opportunities to collaborate on exciting projects and connect with fellow innovators.
-</p>
+                            <div className="profile-image-wrapper" data-aos="fade-right" data-aos-delay="200"></div>
+                            <div className="about-text" data-aos="fade-left" data-aos-delay="400">
+     <p>
+          Hello! I'm Makomborero, a passionate software developer based in Harare, Zimbabwe. I love building elegant, efficient applications that solve real-world problems—whether it's robust backends or intuitive user interfaces.
+        </p>
+        <p>
+          I'm currently sharpening my skills at{" "}
+          <a
+            href="https://uncommon.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="about-link"
+          >
+            Uncommon.org
+          </a>{" "}
+          bootcamp and have earned recognition as a{" "}
+          <a
+            href="https://gdg.community.dev/gdg-harare/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="about-link"
+          >
+            hackathon winner
+          </a>{" "}
+          for my problem-solving under pressure.
+        </p>
+        <p>
+          Beyond coding, I enjoy exploring new tech trends and contributing to open-source. I'm always eager to collaborate on exciting projects and connect with fellow innovators.
+        </p>
                                 <div className="buttons-about-section">
                                     <a
                                         href="/Makomborero_Chidziva_Resume.pdf"
                                         download="Makomborero_Chidziva_Resume.pdf"
                                         className="resume-btn"
-                                        data-aos="fade-up" // AOS for resume button
-                                        data-aos-delay="600" // Staggered animation
+                                        data-aos="fade-up"
+                                        data-aos-delay="600"
                                     >
                                         Download Resume
                                     </a>
@@ -320,8 +399,8 @@ function App() {
                                             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
                                             handleLinkClick('contact');
                                         }}
-                                        data-aos="fade-up" // AOS for hire button
-                                        data-aos-delay="700" // Staggered animation
+                                        data-aos="fade-up"
+                                        data-aos-delay="700"
                                     >
                                         HIRE ME
                                     </a>
@@ -331,96 +410,62 @@ function App() {
                     </div>
                 </section>
 
-              <section id="skills" ref={skillsRef} className="skills section" data-aos="fade-up">
-                    <div className="section-container">
-                      
-                        <div className="section-text">
-                            <p>
-                                I have gained experience in various programming languages and technologies,
-                                which allow me to build dynamic and responsive web applications.
-                                I am proficient in HTML, CSS, and JavaScript for front-end development,
-                                as well as Node.js and Express.js for back-end development. I also have
-                                experience in Python and Java for general-purpose programming and software development.
-                            </p>
-                            <div className="skills-list" data-aos="fade-up" data-aos-delay="200"> {/* Added AOS */}
-                                {[
-                                    "HTML", "CSS", "JavaScript", "Node.js", "Express.js",
-                                    "Python", "Java", "MySQL", "MongoDB", "PHP",
-                                    "TypeScript", "Git & GitHub", "RESTful APIs", "Postman", "React",
-                                ].map((skill) => (
-                                    <button className="skill-btn" key={skill}>
-                                        {skill}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-
-                <section id="projects" ref={projectsRef} className="projects section" data-aos="fade-up">
-                    <div className="section-container">
-                      {/* Added AOS */}
-                        <div className="projects-list">
-                            <div className="project-card" data-aos="fade-up" data-aos-delay="200"> {/* Added AOS */}
-                                <div className="project-image-container">
-                                    <img src="/placeholder-project-1.jpg" alt="Payslip Generator Thumbnail" className="project-thumbnail" />
-                                </div>
-                                <div className="project-details">
-                                    <h3>Payslip Generator</h3>
-                                    <p className="project-description">
-                                        A Python tool that reads employee data from Excel, calculates net
-                                        salaries, generates PDFs, and emails payslips.
-                                    </p>
-                                    <div className="project-tech">
-                                        <span>Python</span>
-                                        <span>Pandas</span>
-                                        <span>PDF Generation</span>
-                                    </div>
-                                    <div className="project-links">
-                                        <a
-                                            href="https://github.com/akomborero/payslip-generator"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            View Code
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="project-card" data-aos="fade-up" data-aos-delay="300"> {/* Added AOS */}
-                                <div className="project-image-container">
-                                    <img src="/placeholder-project-2.jpg" alt="Web Scraper Thumbnail" className="project-thumbnail" />
-                                </div>
-                                <div className="project-details">
-                                    <h3>Web Scraper & Data Aggregator</h3>
-                                    <p className="project-description">
-                                        Scrapes job data from VacancyMail, saves the latest jobs into CSV, and
-                                        automates the process using `schedule`.
-                                    </p>
-                                    <div className="project-tech">
-                                        <span>Python</span>
-                                        <span>Web Scraping</span>
-                                        <span>Automation</span>
-                                    </div>
-                                    <div className="project-links">
-                                        <a
-                                            href="https://github.com/akomborero/Scrap_job-project"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            View Code
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+ <section id="skills" className="skills-section">
+    
+      <div className="skill-cards-column">
+        {skills.map((skill) => (
+          <div className="skill-card-vertical" key={skill.name}>
+            <img src={skill.icon} alt={skill.name} className="skill-card-icon" />
+            <h3>{skill.name}</h3>
+            <p>{skill.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  
+   
+  <section id="projects" className="projects">
+     
+      <div className="projects-list">
+        {projects.map((project) => (
+          <div className="project-row" key={project.title}>
+            <img src={project.image} alt={project.title} className="project-img" />
+            <div className="project-details">
+              <div className="project-header">
+                <h3 className="project-title">
+                  <a href={project.demo || project.github} target="_blank" rel="noopener noreferrer">
+                    {project.title}
+                  </a>
+                </h3>
+                <div className="project-links">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <GithubIcon />
+                  </a>
+                  <a
+                    href={project.demo || project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Demo"
+                  >
+                    <ExternalLinkIcon />
+                  </a>
+                </div>
+              </div>
+              <p className="project-description">{project.description}</p>
+              <ul className="project-tech-list">
+                {project.tech.map((tech) => (
+                  <li key={tech}>{tech}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  
 
                 <section id="contact" ref={contactRef} className="contact section" data-aos="fade-up">
                     <div className="section-container">
-                     {/* Added AOS */}
                         <div className="section-text">
                             <p className="contact-description">
                                 I'm always excited to connect with like-minded individuals,
@@ -429,7 +474,7 @@ function App() {
                                 simply say hello, feel free to reach out!
                             </p>
                         </div>
-                        <form className="contact-form" onSubmit={handleSubmit} data-aos="fade-up" data-aos-delay="200"> {/* Added AOS */}
+                        <form className="contact-form" onSubmit={handleSubmit} data-aos="fade-up" data-aos-delay="200">
                             <h3>Send Me a Message</h3>
                             <p className="contact-form-description">
                                 Use the form below to send me a direct message. I'll get back to
