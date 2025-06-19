@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './App.css';
 import emailjs from 'emailjs-com';
 import { Helmet } from 'react-helmet';
@@ -56,12 +56,12 @@ const socialLinks = [
   },
   {
     name: "Instagram",
-    url: "https://instagram.com/your_instagram_username",
+    url: "https://instagram.com/makomborero844",
     icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg",
   },
   {
     name: "Email",
-    url: "mailto:youraddress@gmail.com",
+    url: "makomborerichidzviva@gmail.com ",
     icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg",
   },
 ];
@@ -87,16 +87,17 @@ const projects = [
 
 const skills = [
   {
-    name: "HTML5",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+     name: "Python",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     description:
-      "I use HTML5 to structure web pages and create semantic, accessible layouts as the foundation for all my frontend projects.",
-  },
+      "Pythonis the first language I studied. Learning Pyhton was love at first sight, and lead to my first ever project - a Rock paper scissors",
+  
+    },
   {
     name: "CSS3",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
     description:
-      "CSS3 helps me style websites, implement responsive designs, and add modern visual effects using Flexbox, Grid, and animations.",
+      "Playing Flexbox Froggy helped me better understand the importance of semantic and well laid out HTML",
   },
   {
     name: "JavaScript",
@@ -111,11 +112,13 @@ const skills = [
       "I use React to build fast, reusable, and scalable user interfaces by leveraging components, hooks, and state management.",
   },
   {
-    name: "Python",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  
+    name: "HTML5",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     description:
-      "Python is my go-to for backend development, data analysis, and scripting thanks to its readability and rich ecosystem.",
-  },
+      "I use HTML5 to structure web pages and create semantic, accessible layouts as the foundation for all my frontend projects.",
+  
+    },
 ];
 
 const GithubIcon = () => (
@@ -132,8 +135,6 @@ const ExternalLinkIcon = () => (
 
 function App() {
   const [activeLink, setActiveLink] = useState('about');
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState('dark');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -142,18 +143,20 @@ function App() {
   const [statusMessage, setStatusMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const aboutRef = useRef(null);
-  const skillsRef = useRef(null);
-  const projectsRef = useRef(null);
-  const contactRef = useRef(null);
+
+const aboutRef = useRef(null);
+const skillsRef = useRef(null);
+const projectsRef = useRef(null);
+const contactRef = useRef(null);
 
   // Define sections with label and id
-  const sections = [
-    { id: 'about', label: 'About', ref: aboutRef },
-    { id: 'skills', label: 'Skills', ref: skillsRef },
-    { id: 'projects', label: 'Projects', ref: projectsRef },
-    { id: 'contact', label: 'Contact', ref: contactRef },
-  ];
+ const sections = useMemo(() => [
+  { id: 'about', label: 'About', ref: aboutRef },
+  { id: 'skills', label: 'Skills', ref: skillsRef },
+  { id: 'projects', label: 'Projects', ref: projectsRef },
+  { id: 'contact', label: 'Contact', ref: contactRef },
+], [aboutRef, skillsRef, projectsRef, contactRef]);
+
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -195,21 +198,13 @@ function App() {
   }, [statusMessage]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      setTheme('dark');
-    }
-    document.body.className = theme === 'dark' ? 'dark-mode' : 'light-mode';
-  }, [theme]);
+    // Default to dark mode class
+    document.body.className = 'dark-mode';
+  }, []);
 
   const handleLinkClick = (linkId) => {
     setActiveLink(linkId);
-    setMenuOpen(false);
   };
-
- 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -285,7 +280,7 @@ function App() {
         </script>
       </Helmet>
 
-      {/* Sidebar / Left-aligned Intro & Navigation Block (desktop only, keep as before) */}
+      {/* Sidebar / Left-aligned Intro & Navigation Block (desktop only) */}
       <div className="left-intro-nav" id="sidebar">
         <div className="profile-badge">
           <h3>Makomborero Chidziva</h3>
@@ -306,24 +301,23 @@ function App() {
           </div>
         </div>
 
-    <nav className="main-nav-links">
-  {sections.map(section => (
-    <a
-      key={section.id}
-      href={`#${section.id}`}
-      className={activeLink === section.id ? 'active' : ''}
-      onClick={e => {
-        e.preventDefault();
-        document.getElementById(section.id).scrollIntoView({ behavior: 'smooth' });
-        handleLinkClick(section.id);
-      }}
-    >
-      <span className="nav-dash" aria-hidden="true"></span>
-      <span className="link-text">{section.label}</span>
-    </a>
-  ))}
-</nav>
-
+        <nav className="main-nav-links">
+          {sections.map(section => (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className={activeLink === section.id ? 'active' : ''}
+              onClick={e => {
+                e.preventDefault();
+                document.getElementById(section.id).scrollIntoView({ behavior: 'smooth' });
+                handleLinkClick(section.id);
+              }}
+            >
+              <span className="nav-dash" aria-hidden="true"></span>
+              <span className="link-text">{section.label}</span>
+            </a>
+          ))}
+        </nav>
 
         <div className="social-links-main">
           {socialLinks.map((link) => (
@@ -350,7 +344,7 @@ function App() {
         <MobileHeader socialLinks={socialLinks} />
 
         <section id="about" ref={aboutRef} className="about section" data-aos="fade-up">
-  <h2 className="section-heading">ABOUT</h2>
+          <h2 className="section-heading">ABOUT</h2>
           <div className="section-container">
             <div className="about-content">
               <div className="about-text" data-aos="fade-left" data-aos-delay="400">
@@ -410,8 +404,8 @@ function App() {
           </div>
         </section>
 
-       <section id="skils" ref={aboutRef} className="about section" data-aos="fade-up">
-  <h2 className="section-heading">SKILS</h2>
+        <section id="skills" ref={skillsRef} className="skills-section" data-aos="fade-up">
+          <h2 className="section-heading">SKILLS</h2>
           <div className="skill-cards-column">
             {skills.map((skill) => (
               <div className="skill-card-vertical" key={skill.name}>
@@ -423,8 +417,8 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" ref={aboutRef} className="about section" data-aos="fade-up">
-  <h2 className="section-heading">PROJECTS</h2>
+        <section id="projects" ref={projectsRef} className="projects section" data-aos="fade-up">
+          <h2 className="section-heading">PROJECTS</h2>
           <div className="projects-list">
             {projects.map((project) => (
               <div className="project-row" key={project.title}>
@@ -462,8 +456,8 @@ function App() {
           </div>
         </section>
 
-       <section id="contact" ref={aboutRef} className="about section" data-aos="fade-up">
-  <h2 className="section-heading">CONTACT</h2>
+        <section id="contact" ref={contactRef} className="contact section" data-aos="fade-up">
+          <h2 className="section-heading">CONTACT</h2>
           <div className="section-container">
             <div className="section-text">
               <p className="contact-description">
