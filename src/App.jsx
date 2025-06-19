@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import emailjs from 'emailjs-com';
 import { Helmet } from 'react-helmet';
@@ -10,7 +10,7 @@ import Typewriter from 'typewriter-effect';
 const MobileHeader = ({ socialLinks }) => (
   <div className="mobile-section-header">
     <div className="mobile-profile">
-      <h3>Makomborero Chidziva</h3>
+      <h2>Makomborero Chidziva</h2>
       <div className="mobile-role">Full Stack Developer</div>
       <div className="mobile-bio">
         I'm a passionate developer building robust and scalable web applications, always eager to learn and collaborate.
@@ -49,10 +49,10 @@ const socialLinks = [
     url: "https://github.com/akomborero",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
   },
-  {
+ {
     name: "LinkedIn",
     url: "https://linkedin.com/in/makomborero",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
+    icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg",
   },
   {
     name: "Instagram",
@@ -147,12 +147,13 @@ function App() {
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
-  const sections = useMemo(() => [
-    { id: 'about', ref: aboutRef },
-    { id: 'skills', ref: skillsRef },
-    { id: 'projects', ref: projectsRef },
-    { id: 'contact', ref: contactRef },
-  ], [aboutRef, skillsRef, projectsRef, contactRef]);
+  // Define sections with label and id
+  const sections = [
+    { id: 'about', label: 'About', ref: aboutRef },
+    { id: 'skills', label: 'Skills', ref: skillsRef },
+    { id: 'projects', label: 'Projects', ref: projectsRef },
+    { id: 'contact', label: 'Contact', ref: contactRef },
+  ];
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -208,13 +209,7 @@ function App() {
     setMenuOpen(false);
   };
 
-  const toggleMenu = () => {
-    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
-  };
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
-  };
+ 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -310,25 +305,26 @@ function App() {
             />
           </div>
         </div>
-        <nav className="main-nav-links">
-          {sections.map(section => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className={activeLink === section.id ? 'active' : ''}
-              onClick={e => {
-                e.preventDefault();
-                document.getElementById(section.id).scrollIntoView({ behavior: 'smooth' });
-                handleLinkClick(section.id);
-              }}
-            >
-              <span className="nav-dash" aria-hidden="true"></span>
-              <span className="link-text">
-                {section.id.charAt(0).toUpperCase() + section.id.slice(1)}
-              </span>
-            </a>
-          ))}
-        </nav>
+
+    <nav className="main-nav-links">
+  {sections.map(section => (
+    <a
+      key={section.id}
+      href={`#${section.id}`}
+      className={activeLink === section.id ? 'active' : ''}
+      onClick={e => {
+        e.preventDefault();
+        document.getElementById(section.id).scrollIntoView({ behavior: 'smooth' });
+        handleLinkClick(section.id);
+      }}
+    >
+      <span className="nav-dash" aria-hidden="true"></span>
+      <span className="link-text">{section.label}</span>
+    </a>
+  ))}
+</nav>
+
+
         <div className="social-links-main">
           {socialLinks.map((link) => (
             <a
@@ -354,7 +350,7 @@ function App() {
         <MobileHeader socialLinks={socialLinks} />
 
         <section id="about" ref={aboutRef} className="about section" data-aos="fade-up">
-          <h2>About</h2>
+  <h2 className="section-heading">ABOUT</h2>
           <div className="section-container">
             <div className="about-content">
               <div className="about-text" data-aos="fade-left" data-aos-delay="400">
@@ -414,8 +410,8 @@ function App() {
           </div>
         </section>
 
-        <section id="skills" ref={skillsRef} className="skills-section" data-aos="fade-up">
-          <h2>Skills</h2>
+       <section id="skils" ref={aboutRef} className="about section" data-aos="fade-up">
+  <h2 className="section-heading">SKILS</h2>
           <div className="skill-cards-column">
             {skills.map((skill) => (
               <div className="skill-card-vertical" key={skill.name}>
@@ -427,8 +423,8 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" ref={projectsRef} className="projects section" data-aos="fade-up">
-          <h2>Projects</h2>
+        <section id="projects" ref={aboutRef} className="about section" data-aos="fade-up">
+  <h2 className="section-heading">PROJECTS</h2>
           <div className="projects-list">
             {projects.map((project) => (
               <div className="project-row" key={project.title}>
@@ -466,8 +462,8 @@ function App() {
           </div>
         </section>
 
-        <section id="contact" ref={contactRef} className="contact section" data-aos="fade-up">
-          <h2>Contact</h2>
+       <section id="contact" ref={aboutRef} className="about section" data-aos="fade-up">
+  <h2 className="section-heading">CONTACT</h2>
           <div className="section-container">
             <div className="section-text">
               <p className="contact-description">
