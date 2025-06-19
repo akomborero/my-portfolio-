@@ -45,6 +45,67 @@
     --font-mono: 'Fira Code', 'SF Mono', monospace;
 }
 
+@media (max-width: 768px) {
+  /* Stack the sidebar and content on mobile */
+  .App {
+    flex-direction: column;
+  }
+  
+  .left-intro-nav {
+    position: static;
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+  
+  /* Center align headings on mobile */
+  .section h2 {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .section h2::before,
+  .section h2::after {
+    display: none;
+  }
+  
+  /* Adjust project card layout */
+  .project-row {
+    flex-direction: column;
+  }
+  
+  .project-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Add to your global styles */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Add to your global styles */
+:root {
+  --scroll: 0;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(var(--scroll) * 100%);
+  height: 3px;
+  background: var(--primary-color);
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
 /* Base body styles (default to dark mode) */
 body {
     font-family: var(--font-sans);
@@ -211,6 +272,117 @@ body.light-mode {
   padding: 2.5rem 1.5rem 2rem 1.5rem;
   box-sizing: border-box;
   /* Keep position: fixed or sticky as needed */
+}
+
+@media (max-width: 900px) {
+  .left-intro-nav {
+    display: none;
+  }
+
+  
+.mobile-section-header {
+  display: block;
+  /* position: sticky;   <--- REMOVED */
+  /* top: 0;            <--- REMOVED */
+  background: var(--background-dark);
+  z-index: 10;
+  padding: 1.2rem 1rem 0.7rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  animation: fadeIn 0.4s;
+}
+  .mobile-section-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.7rem;
+  }
+  .mobile-section-nav .nav-dash {
+    width: 18px;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 1px;
+    display: inline-block;
+  }
+  .mobile-section-nav .link-text {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.08rem;
+    letter-spacing: 0.02em;
+  }
+}
+@media (min-width: 900px) {
+  .mobile-section-header {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .left-intro-nav {
+    display: none;
+  }
+ .mobile-section-header {
+  display: block;
+  /* position: sticky;   <--- REMOVED */
+  /* top: 0;            <--- REMOVED */
+  background: var(--background-dark);
+  z-index: 10;
+  padding: 1.2rem 1rem 0.7rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  animation: fadeIn 0.4s;
+}
+  .mobile-profile h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.15rem 0;
+    color: var(--text-light);
+  }
+  .mobile-role {
+    font-size: 1.05rem;
+    color: var(--primary-color);
+    margin-bottom: 0.2rem;
+  }
+  .mobile-bio {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+  .mobile-typewriter {
+    color: var(--primary-color);
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+  }
+  .mobile-social-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .mobile-social-links img {
+    width: 22px;
+    height: 22px;
+  }
+  .mobile-section-nav {
+    margin-top: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .mobile-section-nav .nav-dash {
+    width: 18px;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 1px;
+    display: inline-block;
+  }
+  .mobile-section-nav .link-text {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.08rem;
+    letter-spacing: 0.02em;
+  }
+}
+@media (min-width: 900px) {
+  .mobile-section-header {
+    display: none;
+  }
 }
 
 .main-content {
@@ -837,6 +1009,8 @@ body.light-mode .buttons-about-section .hire-btn:hover {
   margin: 0;
   line-height: 1.4;
 }
+
+
 /* 7. Experience Section */
 .experience-item {
     background-color: var(--card-bg-dark);
@@ -989,13 +1163,37 @@ body.light-mode .buttons-about-section .hire-btn:hover {
   padding: 0.1em 0.6em;
 }
 /* Project card hover */
+/* Project card enhancements */
 .project-row {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  background: var(--card-bg-dark);
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+.project-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  z-index: -1;
+  transform: translate(5px, 5px);
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
 }
 
 .project-row:hover {
-  transform: translateY(-3px);
+  transform: translate(-5px, -5px);
 }
+
+.project-row:hover::before {
+  transform: translate(10px, 10px);
+}
+
 /* 9. Contact Section */
 .contact-description {
     text-align: center;
