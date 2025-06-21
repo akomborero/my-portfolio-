@@ -5,6 +5,23 @@ import { Helmet } from 'react-helmet';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Typewriter from 'typewriter-effect';
+import { motion } from 'framer-motion';
+
+// --- LEAFLET MAP IMPORTS ---
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+// Fix Leaflet's default icon issue in React
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 // --- MOBILE PROFILE HEADER (shows only once at the top for mobile) ---
 const MobileHeader = ({ socialLinks }) => (
@@ -49,7 +66,7 @@ const socialLinks = [
     url: "https://github.com/akomborero",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
   },
- {
+  {
     name: "LinkedIn",
     url: "https://linkedin.com/in/makomborero",
     icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg",
@@ -61,7 +78,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    url: "makomborerichidzviva@gmail.com ",
+    url: "mailto:makomborerichidzviva@gmail.com",
     icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg",
   },
 ];
@@ -89,9 +106,8 @@ const skills = [
   {
      name: "Python",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    description:
-      "Pythonis the first language I studied. Learning Pyhton was love at first sight, and lead to my first ever project - a Rock paper scissors",
-  
+   description:
+  "Python is the first language I studied. Learning Python was love at first sight, and led to my first ever project – a Rock, Paper, Scissors game.",
     },
   {
     name: "CSS3",
@@ -112,12 +128,10 @@ const skills = [
       "I use React to build fast, reusable, and scalable user interfaces by leveraging components, hooks, and state management.",
   },
   {
-  
     name: "HTML5",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     description:
       "I use HTML5 to structure web pages and create semantic, accessible layouts as the foundation for all my frontend projects.",
-  
     },
 ];
 
@@ -143,20 +157,18 @@ function App() {
   const [statusMessage, setStatusMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-
-const aboutRef = useRef(null);
-const skillsRef = useRef(null);
-const projectsRef = useRef(null);
-const contactRef = useRef(null);
+  const aboutRef = useRef(null);
+  const skillsRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
 
   // Define sections with label and id
- const sections = useMemo(() => [
-  { id: 'about', label: 'About', ref: aboutRef },
-  { id: 'skills', label: 'Skills', ref: skillsRef },
-  { id: 'projects', label: 'Projects', ref: projectsRef },
-  { id: 'contact', label: 'Contact', ref: contactRef },
-], [aboutRef, skillsRef, projectsRef, contactRef]);
-
+  const sections = useMemo(() => [
+    { id: 'about', label: 'About', ref: aboutRef },
+    { id: 'skills', label: 'Skills', ref: skillsRef },
+    { id: 'projects', label: 'Projects', ref: projectsRef },
+    { id: 'contact', label: 'Contact', ref: contactRef },
+  ], [aboutRef, skillsRef, projectsRef, contactRef]);
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -198,7 +210,6 @@ const contactRef = useRef(null);
   }, [statusMessage]);
 
   useEffect(() => {
-    // Default to dark mode class
     document.body.className = 'dark-mode';
   }, []);
 
@@ -238,6 +249,17 @@ const contactRef = useRef(null);
       setIsSubmitted(false);
     }
   };
+
+  // Animation variants for Framer Motion
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const cardVariants = (idx) => ({
+    hidden: { opacity: 0, x: idx % 2 === 0 ? -50 : 50 },
+    visible: { opacity: 1, x: 0 }
+  });
 
   return (
     <div className="App">
@@ -343,7 +365,17 @@ const contactRef = useRef(null);
         {/* Mobile Header - only visible on mobile, once at top */}
         <MobileHeader socialLinks={socialLinks} />
 
-        <section id="about" ref={aboutRef} className="about section" data-aos="fade-up">
+        <motion.section
+          id="about"
+          ref={aboutRef}
+          className="about section"
+          data-aos="fade-up"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={sectionVariants}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
           <h2 className="section-heading">ABOUT</h2>
           <div className="section-container">
             <div className="about-content">
@@ -402,26 +434,61 @@ const contactRef = useRef(null);
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="skills" ref={skillsRef} className="skills-section" data-aos="fade-up">
+        <motion.section
+          id="skills"
+          ref={skillsRef}
+          className="skills-section"
+          data-aos="fade-up"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={sectionVariants}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
           <h2 className="section-heading">SKILLS</h2>
           <div className="skill-cards-column">
-            {skills.map((skill) => (
-              <div className="skill-card-vertical" key={skill.name}>
+            {skills.map((skill, idx) => (
+              <motion.div
+                className="skill-card-vertical"
+                key={skill.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
                 <img src={skill.icon} alt={skill.name} className="skill-card-icon" />
                 <h3>{skill.name}</h3>
                 <p>{skill.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section id="projects" ref={projectsRef} className="projects section" data-aos="fade-up">
+        <motion.section
+          id="projects"
+          ref={projectsRef}
+          className="projects section"
+          data-aos="fade-up"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={sectionVariants}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
           <h2 className="section-heading">PROJECTS</h2>
           <div className="projects-list">
-            {projects.map((project) => (
-              <div className="project-row" key={project.title}>
+            {projects.map((project, idx) => (
+              <motion.div
+                className={`project-row${idx % 2 ? ' reverse' : ''}`}
+                key={project.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={cardVariants(idx)}
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
+              >
                 <img src={project.image} alt={project.title} className="project-img" />
                 <div className="project-details">
                   <div className="project-header">
@@ -451,12 +518,22 @@ const contactRef = useRef(null);
                     ))}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section id="contact" ref={contactRef} className="contact section" data-aos="fade-up">
+        <motion.section
+          id="contact"
+          ref={contactRef}
+          className="contact section"
+          data-aos="fade-up"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={sectionVariants}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
           <h2 className="section-heading">CONTACT</h2>
           <div className="section-container">
             <div className="section-text">
@@ -507,8 +584,25 @@ const contactRef = useRef(null);
                 {statusMessage}
               </p>
             )}
+
+            {/* --- MAP SECTION --- */}
+            <div className="map-section">
+              <MapContainer center={[-17.8252, 31.0335]} zoom={13} style={{ width: "100%", height: "100%" }}>
+                <TileLayer
+                  attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[-17.8252, 31.0335]}>
+                  <Popup>
+                    Makomborero Chidziva<br />Harare, Zimbabwe
+                  </Popup>
+                </Marker>
+              </MapContainer>
+            </div>
+            {/* --- END MAP SECTION --- */}
+
           </div>
-        </section>
+        </motion.section>
       </main>
     </div>
   );
