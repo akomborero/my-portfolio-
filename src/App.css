@@ -896,8 +896,85 @@ body.light-mode .buttons-about-section .hire-btn:hover {
 }.skills-section {
   padding: 2rem 0;
 }
+.about-cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
 
+.about-card {
+  width: 200px;
+  background: var(--card-bg-dark);
+  border-radius: 14px;
+  padding: 1.2rem 1rem 1rem 1rem;
+  box-shadow: 0 2px 12px 0 rgba(100,255,218,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
+}
 
+.about-card-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #313b4a 40%, var(--primary-color) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.7rem;
+}
+
+.about-card-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.about-card h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.about-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.resume-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.7rem;
+  animation: arrowBounce 1.6s infinite;
+}
+
+@keyframes arrowBounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(5px);}
+  100% { transform: translateY(0);}
+}
+
+/* Responsive: stack cards on small screens */
+@media (max-width: 900px) {
+  .about-cards-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .about-card {
+    width: 95vw;
+    max-width: 260px;
+  }
+}
 /* 6. Skills Section */
 .skills-section {
   padding: 2rem 0;

@@ -365,77 +365,90 @@ function App() {
         {/* Mobile Header - only visible on mobile, once at top */}
         <MobileHeader socialLinks={socialLinks} />
 
-        <motion.section
-          id="about"
-          ref={aboutRef}
-          className="about section"
-          data-aos="fade-up"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={sectionVariants}
-          transition={{ duration: 0.7, delay: 0.1 }}
-        >
-          <h2 className="section-heading">ABOUT</h2>
-          <div className="section-container">
-            <div className="about-content">
-              <div className="about-text" data-aos="fade-left" data-aos-delay="400">
-                <p>
-                  Hello! I'm Makomborero, a passionate software developer based in Harare, Zimbabwe. I love building elegant, efficient applications that solve real-world problems—whether it's robust backends or intuitive user interfaces.
-                </p>
-                <p>
-                  I'm currently sharpening my skills at{" "}
-                  <a
-                    href="https://uncommon.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="about-link"
-                  >
-                    Uncommon.org
-                  </a>{" "}
-                  bootcamp and have earned recognition as a{" "}
-                  <a
-                    href="https://gdg.community.dev/gdg-harare/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="about-link"
-                  >
-                    hackathon winner
-                  </a>{" "}
-                  for my problem-solving under pressure.
-                </p>
-                <p>
-                  Beyond coding, I enjoy exploring new tech trends and contributing to open-source. I'm always eager to collaborate on exciting projects and connect with fellow innovators.
-                </p>
-                <div className="buttons-about-section">
-                  <a
-                    href="/Makomborero_Chidziva_Resume.pdf"
-                    download="Makomborero_Chidziva_Resume.pdf"
-                    className="resume-btn"
-                    data-aos="fade-up"
-                    data-aos-delay="600"
-                  >
-                    Download Resume
-                  </a>
-                  <a
-                    href="#contact"
-                    className="hire-btn"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                      handleLinkClick('contact');
-                    }}
-                    data-aos="fade-up"
-                    data-aos-delay="700"
-                  >
-                    HIRE ME
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.section>
+      <motion.section
+  id="about"
+  ref={aboutRef}
+  className="about section"
+  data-aos="fade-up"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={sectionVariants}
+  transition={{ duration: 0.7, delay: 0.1 }}
+>
+  <h2 className="section-heading">ABOUT</h2>
+  <div className="section-container">
+    <div className="about-content">
+      <div className="about-text" data-aos="fade-left" data-aos-delay="400">
+        <p>
+          Hello! I'm Makomborero, a passionate software developer based in Harare, Zimbabwe. I love building elegant, efficient applications that solve real-world problems—whether it's robust backends or intuitive user interfaces.
+        </p>
+        <p>
+          I'm currently sharpening my skills at{" "}
+          <a
+            href="https://uncommon.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="about-link"
+          >
+            Uncommon.org
+          </a>{" "}
+          bootcamp and have earned recognition as a{" "}
+          <a
+            href="https://gdg.community.dev/gdg-harare/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="about-link"
+          >
+            hackathon winner
+          </a>{" "}
+          for my problem-solving under pressure.
+        </p>
+        <p>
+          Beyond coding, I enjoy exploring new tech trends and contributing to open-source. I'm always eager to collaborate on exciting projects and connect with fellow innovators.
+        </p>
+      </div>
+    </div>
 
+ <div className="about-cards-row">
+  <div className="about-card">
+    <h4>Web Developer</h4>
+    <p>
+      Building robust, modern, and responsive web applications with the latest technologies.
+    </p>
+  </div>
+  <div className="about-card">
+    <h4>Problem Solver</h4>
+    <p>
+      Enjoy tackling complex challenges and finding efficient, creative solutions in code.
+    </p>
+  </div>
+  <div className="about-card">
+    <h4>Mobile Development</h4>
+    <p>
+      Creating seamless mobile experiences for Android and cross-platform environments.
+    </p>
+  </div>
+  <a
+    href="/Makomborero_Chidziva_Resume.pdf"
+    download="Makomborero_Chidziva_Resume.pdf"
+    className="about-card"
+    style={{ textDecoration: 'none' }}
+  >
+    <h4>Download Resume</h4>
+    <p>
+      View my detailed resume and learn more about my experience and skills.
+    </p>
+    <span className="resume-arrow" aria-label="Go to download">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="12" fill="#64ffda"/>
+        <path d="M8 12h8m0 0l-3-3m3 3l-3 3" stroke="#0a192f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </span>
+  </a>
+</div>
+  </div>
+</motion.section>
         <motion.section
           id="skills"
           ref={skillsRef}
