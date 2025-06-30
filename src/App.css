@@ -34,6 +34,19 @@
     --font-sans: 'Inter', 'Calibre', sans-serif;
     --font-mono: 'Fira Code', 'SF Mono', monospace;
 }
+/* General text alignment for desktop */
+body, .App, .section, .section-container, .about-text, .section-text,
+.skill-card-vertical, .project-details, .about-card, .contact-description {
+  text-align: left;
+}
+
+/* Center text on mobile for better UX */
+@media (max-width: 900px) {
+  body, .App, .section, .section-container, .about-text, .section-text,
+  .skill-card-vertical, .project-details, .about-card, .contact-description {
+    text-align: center;
+  }
+}
 
 @media (max-width: 768px) {
   /* Stack the sidebar and content on mobile */
@@ -848,6 +861,8 @@ body.light-mode .buttons-about-section .hire-btn:hover {
 
     .contact-form button {
         align-self: flex-start;
+
+
     }
 }
 
@@ -1029,6 +1044,18 @@ body.light-mode .buttons-about-section .hire-btn:hover {
   font-size: 0.92rem;
   margin: 0;
   line-height: 1.4;
+}
+
+/* Desktop: Left aligned */
+.skill-card-vertical {
+  text-align: left;
+}
+
+/* Mobile: Center aligned */
+@media (max-width: 900px) {
+  .skill-card-vertical {
+    text-align: center;
+  }
 }
 
 
@@ -1221,85 +1248,50 @@ body.light-mode .buttons-about-section .hire-btn:hover {
     max-width: 600px;
     margin: 0 auto 2rem;
 }
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    max-width: 600px;
-    margin: 2rem auto 0;
-    padding: 2.5rem;
-    background-color: var(--card-bg-dark);
-    border-radius: var(--border-radius);
-    box-shadow: 0 6px 20px var(--shadow-color);
-    transition: background-color var(--transition-speed);
+.contact-social-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin: 32px 0;
+}
+.contact-social-icon img {
+  transition: transform 0.2s;
+}
+.contact-social-icon:hover img {
+  transform: scale(1.15);
+}
+.contact-social-links img,
+.social-links-main img,
+.mobile-social-links img {
+  filter: brightness(2) invert(1) drop-shadow(0 0 8px #64ffda99);
+  background: transparent;
+  border-radius: 50%;
+  transition: filter 0.2s, transform 0.2s;
 }
 
-.contact-form h3 {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-    font-weight: 600;
+.contact-social-links a:hover img,
+.social-links-main a:hover img,
+.mobile-social-links a:hover img {
+  filter: brightness(4) invert(0.2) drop-shadow(0 0 18px #64ffda);
+  transform: scale(1.18) rotate(-8deg);
+  background: #233554;
+}
+
+/* Desktop: Left aligned for contact section text */
+.contact .contact-description,
+.contact .section-text,
+.contact .contact-social-links {
+  text-align: left;
+}
+
+/* Center on mobile */
+@media (max-width: 900px) {
+  .contact .contact-description,
+  .contact .section-text,
+  .contact .contact-social-links {
     text-align: center;
+  }
 }
-
-.contact-form-description {
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    background-color: var(--background-dark);
-    color: var(--text-light);
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 1px var(--primary-color);
-}
-
-.contact-form textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.contact-form button {
-    align-self: center;
-    padding: 0.9rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.status-message {
-    margin-top: 1.5rem;
-    padding: 0.8rem 1.2rem;
-    border-radius: var(--border-radius);
-    font-weight: bold;
-    text-align: center;
-    transition: opacity 0.5s ease-out;
-}
-
-.status-message.success {
-    background-color: rgba(100, 255, 218, 0.1);
-    color: var(--primary-color);
-}
-
-.status-message.error {
-    background-color: rgba(255, 99, 71, 0.1);
-    color: tomato;
-}
-
-
 /* 10. Desktop / Larger Screens Adjustments */
 @media (min-width: 768px) {
     .App {

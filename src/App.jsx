@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './App.css';
-import emailjs from 'emailjs-com';
 import { Helmet } from 'react-helmet';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -54,11 +53,6 @@ const MobileHeader = ({ socialLinks }) => (
   </div>
 );
 
-// EmailJS details
-const EMAILJS_SERVICE_ID = 'gmail';
-const EMAILJS_TEMPLATE_ID = 'template_tpjs13f';
-const EMAILJS_USER_ID = 'V25OKCvHcTET5iX5K';
-
 // Social links
 const socialLinks = [
   {
@@ -104,11 +98,11 @@ const projects = [
 
 const skills = [
   {
-     name: "Python",
+    name: "Python",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-   description:
-  "Python is the first language I studied. Learning Python was love at first sight, and led to my first ever project – a Rock, Paper, Scissors game.",
-    },
+    description:
+      "Python is the first language I studied. Learning Python was love at first sight, and led to my first ever project – a Rock, Paper, Scissors game.",
+  },
   {
     name: "CSS3",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
@@ -132,7 +126,17 @@ const skills = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     description:
       "I use HTML5 to structure web pages and create semantic, accessible layouts as the foundation for all my frontend projects.",
-    },
+  },
+ {
+  name: "TypeScript",
+  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  description: "I use TypeScript to write safer, more robust code with powerful static typing and modern JavaScript features.",
+},
+{
+  name: "Tailwind CSS",
+  icon: "https://i.pinimg.com/736x/5e/42/c9/5e42c926feb229f934d3089d89c26e2f.jpg",
+  description: "Tailwind CSS lets me rapidly build modern interfaces with utility-first classes and responsive design.",
+},
 ];
 
 const GithubIcon = () => (
@@ -147,15 +151,18 @@ const ExternalLinkIcon = () => (
   </svg>
 );
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
+};
+
 function App() {
   const [activeLink, setActiveLink] = useState('about');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [statusMessage, setStatusMessage] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const aboutRef = useRef(null);
   const skillsRef = useRef(null);
@@ -171,7 +178,7 @@ function App() {
   ], [aboutRef, skillsRef, projectsRef, contactRef]);
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 1200, once: true, mirror: true });
 
     const observerOptions = { root: null, threshold: 0.5 };
 
@@ -201,15 +208,6 @@ function App() {
   }, [sections]);
 
   useEffect(() => {
-    if (statusMessage) {
-      const timeout = setTimeout(() => {
-        setStatusMessage('');
-      }, 5000);
-      return () => clearTimeout(timeout);
-    }
-  }, [statusMessage]);
-
-  useEffect(() => {
     document.body.className = 'dark-mode';
   }, []);
 
@@ -217,44 +215,8 @@ function App() {
     setActiveLink(linkId);
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatusMessage('All fields are required.');
-      setIsSubmitted(false);
-      return;
-    }
-
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData, EMAILJS_USER_ID);
-      setStatusMessage('Your message has been sent successfully!');
-      setIsSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-      });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      setStatusMessage('Oops! Something went wrong. Please try again.');
-      setIsSubmitted(false);
-    }
-  };
-
   // Animation variants for Framer Motion
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0 }
-  };
+  const sectionVariants = fadeInUp;
 
   const cardVariants = (idx) => ({
     hidden: { opacity: 0, x: idx % 2 === 0 ? -50 : 50 },
@@ -303,7 +265,8 @@ function App() {
       </Helmet>
 
       {/* Sidebar / Left-aligned Intro & Navigation Block (desktop only) */}
-      <div className="left-intro-nav" id="sidebar">
+      <motion.div className="left-intro-nav" id="sidebar"
+        initial="hidden" animate="visible" variants={fadeIn} transition={{ duration: 1, delay: 0.1 }}>
         <div className="profile-badge">
           <h3>Makomborero Chidziva</h3>
           <h3>Full Stack Developer</h3>
@@ -355,100 +318,124 @@ function App() {
                 alt={link.name}
                 width="28"
                 height="28"
+                className="dark-social-icon"
               />
             </a>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       <main className="main-content">
         {/* Mobile Header - only visible on mobile, once at top */}
         <MobileHeader socialLinks={socialLinks} />
 
-      <motion.section
-  id="about"
-  ref={aboutRef}
-  className="about section"
-  data-aos="fade-up"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={sectionVariants}
-  transition={{ duration: 0.7, delay: 0.1 }}
->
-  <h2 className="section-heading">ABOUT</h2>
-  <div className="section-container">
-    <div className="about-content">
-      <div className="about-text" data-aos="fade-left" data-aos-delay="400">
-        <p>
-          Hello! I'm Makomborero, a passionate software developer based in Harare, Zimbabwe. I love building elegant, efficient applications that solve real-world problems—whether it's robust backends or intuitive user interfaces.
-        </p>
-        <p>
-          I'm currently sharpening my skills at{" "}
-          <a
-            href="https://uncommon.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="about-link"
-          >
-            Uncommon.org
-          </a>{" "}
-          bootcamp and have earned recognition as a{" "}
-          <a
-            href="https://gdg.community.dev/gdg-harare/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="about-link"
-          >
-            hackathon winner
-          </a>{" "}
-          for my problem-solving under pressure.
-        </p>
-        <p>
-          Beyond coding, I enjoy exploring new tech trends and contributing to open-source. I'm always eager to collaborate on exciting projects and connect with fellow innovators.
-        </p>
-      </div>
-    </div>
+        <motion.section
+          id="about"
+          ref={aboutRef}
+          className="about section"
+          data-aos="fade-up"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
+          <h2 className="section-heading">ABOUT</h2>
+          <div className="section-container">
+            <motion.div className="about-content"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <div className="about-text" data-aos="fade-left" data-aos-delay="400">
+                <p>
+                  Hello! I'm Makomborero, a passionate software developer. I love building elegant, efficient applications that solve real-world problems—whether it's robust backends or intuitive user interfaces.
+                </p>
+                <p>
+                  I'm currently sharpening my skills at{" "}
+                  <a
+                    href="https://uncommon.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="about-link"
+                  >
+                    Uncommon.org
+                  </a>{" "}
+                  bootcamp and have earned recognition as a{" "}
+                  <a
+                    href="https://gdg.community.dev/gdg-harare/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="about-link"
+                  >
+                    hackathon winner
+                  </a>{" "}
+                  for my problem-solving under pressure.
+                </p>
+                <p>
+                  Beyond coding, I enjoy exploring new tech trends and contributing to open-source. I'm always eager to collaborate on exciting projects and connect with fellow innovators.
+                </p>
+              </div>
+            </motion.div>
 
- <div className="about-cards-row">
-  <div className="about-card">
-    <h4>Web Developer</h4>
-    <p>
-      Building robust, modern, and responsive web applications with the latest technologies.
-    </p>
-  </div>
-  <div className="about-card">
-    <h4>Problem Solver</h4>
-    <p>
-      Enjoy tackling complex challenges and finding efficient, creative solutions in code.
-    </p>
-  </div>
-  <div className="about-card">
-    <h4>Mobile Development</h4>
-    <p>
-      Creating seamless mobile experiences for Android and cross-platform environments.
-    </p>
-  </div>
-  <a
-    href="/Makomborero_Chidziva_Resume.pdf"
-    download="Makomborero_Chidziva_Resume.pdf"
-    className="about-card"
-    style={{ textDecoration: 'none' }}
-  >
-    <h4>Download Resume</h4>
-    <p>
-      View my detailed resume and learn more about my experience and skills.
-    </p>
-    <span className="resume-arrow" aria-label="Go to download">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="12" fill="#64ffda"/>
-        <path d="M8 12h8m0 0l-3-3m3 3l-3 3" stroke="#0a192f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    </span>
-  </a>
-</div>
-  </div>
-</motion.section>
+            <motion.div className="about-cards-row"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <motion.div className="about-card"
+                whileHover={{ scale: 1.07, boxShadow: "0 8px 24px #64ffda40" }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h4>Web Developer</h4>
+                <p>
+                  Building robust, modern, and responsive web applications with the latest technologies.
+                </p>
+              </motion.div>
+              <motion.div className="about-card"
+                whileHover={{ scale: 1.07, boxShadow: "0 8px 24px #64ffda40" }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h4>Problem Solver</h4>
+                <p>
+                  Enjoy tackling complex challenges and finding efficient, creative solutions in code.
+                </p>
+              </motion.div>
+              <motion.div className="about-card"
+                whileHover={{ scale: 1.07, boxShadow: "0 8px 24px #64ffda40" }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h4>Mobile Development</h4>
+                <p>
+                  Creating seamless mobile experiences for Android and cross-platform environments.
+                </p>
+              </motion.div>
+              <motion.a
+                href="/Makomborero_Chidziva_Resume.pdf"
+                download="Makomborero_Chidziva_Resume.pdf"
+                className="about-card"
+                style={{ textDecoration: 'none' }}
+                whileHover={{ scale: 1.07, boxShadow: "0 8px 24px #64ffda40" }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h4>Download Resume</h4>
+                <p>
+                  View my detailed resume and learn more about my experience and skills.
+                </p>
+                <span className="resume-arrow" aria-label="Go to download">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="12" fill="#64ffda"/>
+                    <path d="M8 12h8m0 0l-3-3m3 3l-3 3" stroke="#0a192f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+              </motion.a>
+            </motion.div>
+          </div>
+        </motion.section>
         <motion.section
           id="skills"
           ref={skillsRef}
@@ -458,7 +445,7 @@ function App() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={sectionVariants}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
         >
           <h2 className="section-heading">SKILLS</h2>
           <div className="skill-cards-column">
@@ -470,6 +457,7 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 6px 24px #64ffda2c" }}
               >
                 <img src={skill.icon} alt={skill.name} className="skill-card-icon" />
                 <h3>{skill.name}</h3>
@@ -488,7 +476,7 @@ function App() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={sectionVariants}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
         >
           <h2 className="section-heading">PROJECTS</h2>
           <div className="projects-list">
@@ -501,6 +489,7 @@ function App() {
                 viewport={{ once: true }}
                 variants={cardVariants(idx)}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
+                whileHover={{ scale: 1.03, boxShadow: "0 8px 32px #64ffda24" }}
               >
                 <img src={project.image} alt={project.title} className="project-img" />
                 <div className="project-details">
@@ -545,61 +534,61 @@ function App() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={sectionVariants}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
         >
           <h2 className="section-heading">CONTACT</h2>
           <div className="section-container">
-            <div className="section-text">
+            <motion.div className="section-text"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
               <p className="contact-description">
                 I'm always excited to connect with like-minded individuals,
                 collaborate on projects, or answer any questions you may have.
                 Whether you're looking to discuss opportunities, share ideas, or
-                simply say hello, feel free to reach out!
+                simply say hello, feel free to connect with me on these platforms!
               </p>
-            </div>
-            <form className="contact-form" onSubmit={handleSubmit} data-aos="fade-up" data-aos-delay="200">
-              <h3>Send Me a Message</h3>
-              <p className="contact-form-description">
-                Use the form below to send me a direct message. I'll get back to
-                you as soon as possible!
-              </p>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Your Name"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Your Email"
-                required
-              />
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder="Your Message"
-                required
-              />
-              <button type="submit">Send Message</button>
-            </form>
-            {statusMessage && (
-              <p
-                className={`status-message ${
-                  isSubmitted ? 'success' : 'error'
-                }`}
-              >
-                {statusMessage}
-              </p>
-            )}
-
+            </motion.div>
+            <motion.div
+              className="contact-social-links"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              transition={{ duration: 1, delay: 0.35 }}
+            >
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.name}
+                  className="contact-social-icon"
+                >
+                  <img
+                    src={link.icon}
+                    alt={link.name}
+                    width="40"
+                    height="40"
+                    className="dark-social-icon"
+                  />
+                </a>
+              ))}
+            </motion.div>
             {/* --- MAP SECTION --- */}
-            <div className="map-section">
+
+            
+            <motion.div
+              className="map-section"
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, delay: 0.45 }}
+            >
               <MapContainer center={[-17.8252, 31.0335]} zoom={13} style={{ width: "100%", height: "100%" }}>
                 <TileLayer
                   attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -611,9 +600,8 @@ function App() {
                   </Popup>
                 </Marker>
               </MapContainer>
-            </div>
+            </motion.div>
             {/* --- END MAP SECTION --- */}
-
           </div>
         </motion.section>
       </main>
