@@ -137,7 +137,31 @@ const skills = [
   icon: "https://i.pinimg.com/736x/5e/42/c9/5e42c926feb229f934d3089d89c26e2f.jpg",
   description: "Tailwind CSS lets me rapidly build modern interfaces with utility-first classes and responsive design.",
 },
+{
+    name: "Node.js",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    description: "I create scalable backend services and APIs using Node.js runtime."
+  },
+  {
+    name: "Express",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    description: "Building RESTful APIs with middleware, routing, and error handling."
+  },
+  {
+    name: "MongoDB",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    description: "NoSQL database design with Mongoose ODM for data modeling."
+  },
+
+  // Other skills (keep your existing ones)
+  {
+    name: "TypeScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    description: "Static typing for better code quality and developer experience."
+  }
 ];
+
+
 
 const GithubIcon = () => (
   <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
