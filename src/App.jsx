@@ -83,7 +83,7 @@ const projects = [
     description: "An app to generate professional payslips instantly from employee data. Export as PDF or email directly.",
     github: "https://github.com/akomborero/payslip-generator",
     demo: "https://payslip-generator-akomborero.vercel.app/",
-    tech: ["React", "Node.js", "Express", "PDFKit"],
+    tech: [ "panadas", "PDFKit"],
     image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?fit=crop&w=400&q=80"
   },
   {
