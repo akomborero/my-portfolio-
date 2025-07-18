@@ -83,7 +83,7 @@ const projects = [
     description: "An app to generate professional payslips instantly from employee data. Export as PDF or email directly.",
     github: "https://github.com/akomborero/payslip-generator",
     demo: "https://payslip-generator-akomborero.vercel.app/",
-    tech: [ "Python","panadas", "PDFKit"],
+    tech: ["Python", "Pandas", "PDFKit"],
     image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?fit=crop&w=400&q=80"
   },
   {
@@ -94,6 +94,14 @@ const projects = [
     tech: ["Python", "BeautifulSoup", "Requests"],
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80"
   },
+  {
+    title: "SnapEvent",
+    description: "A dynamic event management platform for seamless planning, promotion, and execution of events.",
+    github: "https://github.com/akomborero/snapevent",
+    demo: "https://i.pinimg.com/736x/d7/9e/65/d79e65ae30f714c147e9e8a0e5ad26ce.jpg",
+    tech: ["React", "Node.js", "CSS", " PostgreSQL"],
+    image: "https://i.pinimg.com/736x/d7/9e/65/d79e65ae30f714c147e9e8a0e5ad26ce.jpg"
+  }
 ];
 
 const skills = [
@@ -127,17 +135,17 @@ const skills = [
     description:
       "I use HTML5 to structure web pages and create semantic, accessible layouts as the foundation for all my frontend projects.",
   },
- {
-  name: "TypeScript",
-  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-  description: "I use TypeScript to write safer, more robust code with powerful static typing and modern JavaScript features.",
-},
-{
-  name: "Tailwind CSS",
-  icon: "https://i.pinimg.com/736x/5e/42/c9/5e42c926feb229f934d3089d89c26e2f.jpg",
-  description: "Tailwind CSS lets me rapidly build modern interfaces with utility-first classes and responsive design.",
-},
-{
+  {
+    name: "TypeScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    description: "I use TypeScript to write safer, more robust code with powerful static typing and modern JavaScript features.",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: "https://i.pinimg.com/736x/5e/42/c9/5e42c926feb229f934d3089d89c26e2f.jpg",
+    description: "Tailwind CSS lets me rapidly build modern interfaces with utility-first classes and responsive design.",
+  },
+  {
     name: "Node.js",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
     description: "I create scalable backend services and APIs using Node.js runtime."
@@ -152,15 +160,17 @@ const skills = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
     description: "NoSQL database design with Mongoose ODM for data modeling."
   },
-
-  // Other skills (keep your existing ones)
   {
-    name: "TypeScript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-    description: "Static typing for better code quality and developer experience."
-  }
+    name: "SQL",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", // Or a general SQL icon if preferred
+    description: "Managing and querying relational databases using SQL for data manipulation and retrieval."
+  },
+  {
+    name: "PostgreSQL",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    description: "Working with PostgreSQL for robust and scalable relational database solutions."
+  },
 ];
-
 
 
 const GithubIcon = () => (
@@ -438,25 +448,6 @@ function App() {
                   Creating seamless mobile experiences for Android and cross-platform environments.
                 </p>
               </motion.div>
-              <motion.a
-                href="/Makomborero_Chidziva_Resume.pdf"
-                download="Makomborero_Chidziva_Resume.pdf"
-                className="about-card"
-                style={{ textDecoration: 'none' }}
-                whileHover={{ scale: 1.07, boxShadow: "0 8px 24px #64ffda40" }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <h4>Download Resume</h4>
-                <p>
-                  View my detailed resume and learn more about my experience and skills.
-                </p>
-                <span className="resume-arrow" aria-label="Go to download">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="12" fill="#64ffda"/>
-                    <path d="M8 12h8m0 0l-3-3m3 3l-3 3" stroke="#0a192f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-              </motion.a>
             </motion.div>
           </div>
         </motion.section>
@@ -547,6 +538,24 @@ function App() {
               </motion.div>
             ))}
           </div>
+          <div className="view-full-resume-container">
+            <motion.a
+              href="https://docs.google.com/document/d/1X-s9lB0tA8M_W_8_1K12X2j-D0P7F4H-W0m0K2g2f2c/edit?usp=sharing" // Replace with your actual Google Docs resume link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="view-full-resume-link"
+              whileHover={{ scale: 1.05, boxShadow: "0 8px 24px #64ffda40" }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              View Full Resume
+              <span className="resume-arrow" aria-label="Go to resume">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="12" fill="#64ffda" />
+                  <path d="M8 12h8m0 0l-3-3m3 3l-3 3" stroke="#0a192f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </motion.a>
+          </div>
         </motion.section>
 
         <motion.section
@@ -605,7 +614,7 @@ function App() {
             </motion.div>
             {/* --- MAP SECTION --- */}
 
-            
+
             <motion.div
               className="map-section"
               initial={{ opacity: 0, scale: 0.96 }}
