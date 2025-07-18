@@ -540,7 +540,7 @@ function App() {
           </div>
           <div className="view-full-resume-container">
             <motion.a
-              href="https://docs.google.com/document/d/1X-s9lB0tA8M_W_8_1K12X2j-D0P7F4H-W0m0K2g2f2c/edit?usp=sharing" // Replace with your actual Google Docs resume link
+              href="https://docs.google.com/document/d/1yCQr86OH8SGeOBiyvwKANNHO5cyDlXdQ9Od8kx3SDkk/edit?usp=sharing" // Replace with your actual Google Docs resume link
               target="_blank"
               rel="noopener noreferrer"
               className="view-full-resume-link"
