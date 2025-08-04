@@ -106,70 +106,75 @@ const projects = [
 
 const skills = [
   {
-    name: "Python",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    description:
-      "Python is the first language I studied. Learning Python was love at first sight, and led to my first ever project – a Rock, Paper, Scissors game.",
+    name: 'Python',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+    description: 'Python is the first language I studied. Learning Python was love at first sight, and led to my first ever project – a Rock, Paper, Scissors game.'
   },
   {
-    name: "CSS3",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-    description:
-      "Playing Flexbox Froggy helped me better understand the importance of semantic and well laid out HTML",
+    name: 'CSS3',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
+    description: 'Playing Flexbox Froggy helped me better understand the importance of semantic and well laid out HTML'
   },
   {
-    name: "JavaScript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-    description:
-      "JavaScript enables me to make web pages interactive, handle dynamic content, and build powerful client-side applications.",
+    name: 'JavaScript',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+    description: 'JavaScript enables me to make web pages interactive, handle dynamic content, and build powerful client-side applications.'
   },
   {
-    name: "React",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    description:
-      "I use React to build fast, reusable, and scalable user interfaces by leveraging components, hooks, and state management.",
+    name: 'React',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+    description: 'I use React to build fast, reusable, and scalable user interfaces by leveraging components, hooks, and state management.'
   },
   {
-    name: "HTML5",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-    description:
-      "I use HTML5 to structure web pages and create semantic, accessible layouts as the foundation for all my frontend projects.",
+    name: 'HTML5',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
+    description: 'I use HTML5 to structure web pages and create semantic, accessible layouts as the foundation for all my frontend projects.'
   },
   {
-    name: "TypeScript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-    description: "I use TypeScript to write safer, more robust code with powerful static typing and modern JavaScript features.",
+    name: 'TypeScript',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+    description: 'I use TypeScript to write safer, more robust code with powerful static typing and modern JavaScript features.'
   },
   {
-    name: "Tailwind CSS",
-    icon: "https://i.pinimg.com/736x/5e/42/c9/5e42c926feb229f934d3089d89c26e2f.jpg",
-    description: "Tailwind CSS lets me rapidly build modern interfaces with utility-first classes and responsive design.",
+    name: 'Tailwind CSS',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+    description: 'Tailwind CSS lets me rapidly build modern interfaces with utility-first classes and responsive design.'
   },
   {
-    name: "Node.js",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-    description: "I create scalable backend services and APIs using Node.js runtime."
+    name: 'Node.js',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+    description: 'I create scalable backend services and APIs using Node.js runtime.'
   },
   {
-    name: "Express",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-    description: "Building RESTful APIs with middleware, routing, and error handling."
+    name: 'Express',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg',
+    description: 'Building RESTful APIs with middleware, routing, and error handling.'
   },
   {
-    name: "MongoDB",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    description: "NoSQL database design with Mongoose ODM for data modeling."
+    name: 'MongoDB',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg',
+    description: 'NoSQL database design with Mongoose ODM for data modeling.'
   },
   {
-    name: "SQL",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", // Or a general SQL icon if preferred
-    description: "Managing and querying relational databases using SQL for data manipulation and retrieval."
+    name: 'SQL',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', // Using PostgreSQL icon as a general SQL icon
+    description: 'Managing and querying relational databases using SQL for data manipulation and retrieval.'
   },
   {
-    name: "PostgreSQL",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-    description: "Working with PostgreSQL for robust and scalable relational database solutions."
+    name: 'PostgreSQL',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+    description: 'Working with PostgreSQL for robust and scalable relational database solutions.'
   },
+  {
+    name: 'Angular',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg',
+    description: 'I use Angular to build dynamic, single-page web applications, leveraging its component-based architecture and TypeScript support for scalable and maintainable solutions.'
+  },
+  {
+    name: 'PHP',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg',
+    description: 'I use PHP for server-side scripting, powering dynamic websites and web applications, often with frameworks like Laravel or Symfony.'
+  }
 ];
 
 
