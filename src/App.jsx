@@ -79,6 +79,15 @@ const socialLinks = [
 
 const projects = [
   {
+    title: "Educational App (In Progress)",
+    description: "An ongoing project to build an educational mobile app using React Native. The current phase focuses on the user authentication system, featuring a polished login and sign-up flow. This work highlights my skills in front-end development, responsive design, and navigation with expo-router.",
+    github: "",
+    demo: "",
+    tech: ["ReactNative", "Typescript", "Fullstack"],
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80"
+  },
+  {
+    
     title: "Payslip Generator",
     description: "An app to generate professional payslips instantly from employee data. Export as PDF or email directly.",
     github: "https://github.com/akomborero/payslip-generator",
