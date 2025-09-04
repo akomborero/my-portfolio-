@@ -135,6 +135,11 @@ const skills = [
     description: 'I use React to build fast, reusable, and scalable user interfaces by leveraging components, hooks, and state management.'
   },
   {
+    name: 'React Native',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+    description: 'Developed and maintained cross-platform mobile applications using a single codebase for both iOS and Android.'
+  },
+  {
     name: 'HTML5',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
     description: 'I use HTML5 to structure web pages and create semantic, accessible layouts as the foundation for all my frontend projects.'
