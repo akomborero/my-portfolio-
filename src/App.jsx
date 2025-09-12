@@ -124,6 +124,16 @@ const skills = [
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
     description: 'Playing Flexbox Froggy helped me better understand the importance of semantic and well laid out HTML'
   },
+   {
+    name: 'Java',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+    description: 'Developed robust and scalable backend services and APIs using modern Java frameworks like Spring Boot.'
+  },
+   {
+    name: 'AWS',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
+    description: 'Deployed full-stack applications to AWS using services like EC2 and Elastic Beanstalk, and managed data with RDS and S3.'
+  },
   {
     name: 'JavaScript',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
