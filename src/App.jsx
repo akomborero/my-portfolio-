@@ -417,7 +417,7 @@ function App() {
                   Hello! I'm Makomborero, a passionate software developer. I love building elegant, efficient applications that solve real-world problems—whether it's robust backends or intuitive user interfaces.
                 </p>
                 <p>
-                  I'm currently sharpening my skills at{" "}
+                  I sharpened my skills at{" "}
                   <a
                     href="https://uncommon.org/"
                     target="_blank"
