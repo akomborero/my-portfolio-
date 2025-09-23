@@ -92,7 +92,7 @@ const projects = [
   description: "An all-in-one platform designed to simplify wedding planning, from guest list management and budget tracking to vendor coordination.",
   github: "https://github.com/your-username/your-wedding-planner-repo",
   demo: "https://wedding-planner-iota-ebon.vercel.app/", // or a link to a video preview
-  tech: ["React", "Next.js", "Firebase", "Tailwind CSS"],
+  tech: ["Next.js",Node.js, "Firebase", "Tailwind CSS"],
   image: "https://i.pinimg.com/736x/6c/ae/f9/6caef9dd8fae6216ff47e4cdfab7f254.jpg" // A placeholder image link
 },
   {
