@@ -86,6 +86,23 @@ const projects = [
     tech: ["ReactNative", "Typescript", "Fullstack"],
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80"
   },
+  
+  {
+  title: "Wedding Planner",
+  description: "An all-in-one platform designed to simplify wedding planning, from guest list management and budget tracking to vendor coordination.",
+  github: "https://github.com/your-username/your-wedding-planner-repo",
+  demo: "https://wedding-planner-iota-ebon.vercel.app/", // or a link to a video preview
+  tech: ["React", "Next.js", "Firebase", "Tailwind CSS"],
+  image: "https://i.pinimg.com/736x/6c/ae/f9/6caef9dd8fae6216ff47e4cdfab7f254.jpg" // A placeholder image link
+},
+  {
+    title: "SnapEvent",
+    description: "A dynamic event management platform for seamless planning, promotion, and execution of events.",
+    github: "https://github.com/akomborero/snapevent",
+    demo: "https://snap-event-henna.vercel.app/event-gallery/3c020fe2-37c3-4463-98a5-be1e35e319bd",
+    tech: ["React", "Node.js", "CSS", " PostgreSQL"],
+    image: "https://i.pinimg.com/736x/d7/9e/65/d79e65ae30f714c147e9e8a0e5ad26ce.jpg"
+  },
   {
     
     title: "Payslip Generator",
@@ -102,14 +119,6 @@ const projects = [
     demo: "",
     tech: ["Python", "BeautifulSoup", "Requests"],
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80"
-  },
-  {
-    title: "SnapEvent",
-    description: "A dynamic event management platform for seamless planning, promotion, and execution of events.",
-    github: "https://github.com/akomborero/snapevent",
-    demo: "https://i.pinimg.com/736x/d7/9e/65/d79e65ae30f714c147e9e8a0e5ad26ce.jpg",
-    tech: ["React", "Node.js", "CSS", " PostgreSQL"],
-    image: "https://i.pinimg.com/736x/d7/9e/65/d79e65ae30f714c147e9e8a0e5ad26ce.jpg"
   }
 ];
 
