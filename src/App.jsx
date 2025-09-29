@@ -86,6 +86,15 @@ const projects = [
     tech: ["ReactNative", "Typescript", "Fullstack"],
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80"
   },
+  {
+  title: "Monecuer Company Website",
+  description: "Designed and developed a professional, responsive website for a company to showcase services, improve user engagement, and enhance online presence.",
+  github: "https://github.com/akomborero/wrlds-ai-integration-1714", // optional if you want to show code
+  demo: "https://monecuer.vercel.app/", // a live demo or placeholder link
+  tech: ["Next.js", "Tailwind CSS", "Node.js"], // list the main tech you used
+   image: "/monecuer.jpeg"  // placeholder image
+},
+
   
   {
   title: "Wedding Planner",
