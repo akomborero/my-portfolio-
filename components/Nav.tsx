@@ -51,8 +51,8 @@ export default function Nav() {
             Full Stack Developer
           </h2>
           <p className="text-sm lg:text-start fade-smoke-white">
-            I&apos;m a passionate software engineer at Zoma Digital, building innovative apps, eager to learn and collaborate.
-          </p>
+  I&apos;m a passionate software engineer at Zoma Digital, building innovative apps, eager to learn and collaborate.
+</p>
         </div>
       </div>
       <nav className="lg:flex hidden">
