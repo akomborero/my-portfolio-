@@ -12,99 +12,28 @@ import { MoveRight } from "lucide-react";
 
 const jobPositions = [
   {
-    timeline: "Aug 2024 — Present",
-    currentPosition: "Founding Designer & Head of Product Design",
-    place: "Stealth AI Startup",
+    timeline: "2025 — PRESENT",
+    currentPosition: "SOFTWARE ENGENEER",
+    place: "ZOMAC DIGITAL",
     previousPositions: [""],
     description:
-      "Establishing and leading the design team for a Stealth AI Startup set to bring the New Era of Money. My role involves founding and leading the design team, setting the vision and standards for design excellence, direct branding and actively contributing to hands-on product design for going to market.",
+      "Contributing to the development and growth of digital products at Zomac Digital. My role involves helping shape the technical direction of projects, ensuring high-quality engineering standards, and working hands-on across both frontend and backend to deliver polished, reliable, and scalable solutions ready for market.",
+      
     skills: [
-      "Brand Identity",
+      "Javascipt",
       "Product Design",
       "UI/UX Design",
       "Design Systems",
       "Design Strategy",
-      "Team Leadership",
+      "PHP",
+      "React",
+      "Postman",
+      "insomnia",
+      "Flutter",
+      "API",
     ],
   },
-  {
-    timeline: "Mar 2024 — Present",
-    currentPosition: "Head of Product Design",
-    place: "Vela Exchange",
-    previousPositions: ["Designer and Front-end Developer"],
-    description:
-      "Leading the design team for Vela Exchange, a community-first, decentralized perpetuals trading platform. My role involves setting the vision and standards for design excellence, and actively contributing to hands-on product design.",
-    skills: [
-      "Product Design",
-      "UI/UX Design",
-      "Design Systems",
-      "Design Strategy",
-      "Team Leadership",
-    ],
-  },
-  {
-    timeline: "Feb 2022 — Presents",
-    currentPosition: "Co-founder, Designer & Developer",
-    place: "Swoop Exchange",
-    previousPositions: [""],
-    description:
-      "Co-founded, designed, and developed a Next-Gen Decentralized Exchange from MVP to launch, scaling from zero to over $10M in trading volume. Swoop Exchange is powered by a novel Meta-Aggregation Engine that leverages sophisticated routing algorithms and APIs to automatically route trades from the most profitable liquidity sources, vastly improving swap efficiency and user experience.",
-    skills: [
-      "Typescript",
-      "JavaScript",
-      "CSS",
-      "Tailwind CSS",
-      "MUI",
-      "HTML",
-      "Figma",
-      "UI/UX Design",
-      "Blockchain tech",
-      "Project Management",
-      "Planning",
-      "Leadership",
-      "Testing & QA",
-    ],
-  },
-  {
-    timeline: "Aug 2016 — Mar 2024",
-    currentPosition: "Head of QA",
-    place: "Lykomitros Steel",
-    previousPositions: [
-      "Quality Assurance Engineer",
-      "QA/QC Administrative Support",
-    ],
-    description:
-      "Lead the QA department, focusing on renewable energy components in steel manufacturing. Maintained industry and client standards, ensuring product integrity for renewable energy.",
-    skills: [
-      "ISO Compliance",
-      "Quality Assurance",
-      "Engineering Management",
-      "ISO 9001",
-      "ISO 45001",
-      "ISO 14001",
-      "Requirement Assessment",
-      "Auditing",
-    ],
-  },
-  {
-    timeline: "Nov 2013 - May 2014",
-    currentPosition: "Digital Systems Admin - Internship",
-    place: "OTE Group (HTO)",
-    previousPositions: [""],
-    description:
-      "Gained valuable experience in digital systems administration, focusing on the management of contractors and capital.",
-    skills: [
-      "SQL",
-      "Administration",
-      "Problem-Solving",
-      "Computer Systems",
-      "System documentation",
-      "Networking",
-      "Cloud Computing",
-      "Automation",
-      "Scripting",
-    ],
-  },
+  
 ];
 
 export default function ExpCard() {
@@ -115,6 +44,9 @@ export default function ExpCard() {
           Experience
         </h2>
       </div>
+      <div className="flex flex-col gap-4 lg:px-6">
+       
+      </div>
       <>
         {jobPositions.map((job, index) => (
           <Card
@@ -122,25 +54,25 @@ export default function ExpCard() {
             className="lg:p-6 mb-4 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border-transparent hover:border dark:lg:hover:border-t-blue-900 dark:lg:hover:bg-slate-800/50 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-100/50 lg:hover:border-t-blue-200"
           >
             <CardHeader className="h-full w-full p-0">
-              <CardTitle className="text-base text-slate-400 whitespace-nowrap">
+              <CardTitle className="text-xs text-slate-400 whitespace-nowrap">
                 {job.timeline}
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col p-0">
-              <p className="text-foreground font-bold">
+              <p className="text-foreground font-bold text-sm">
                 {job.currentPosition} • {job.place}
               </p>
               {job.previousPositions.map((position, index) => (
-                <p key={index} className="text-slate-400 text-sm font-bold">
+                <p key={index} className="text-slate-400 text-xs font-bold">
                   {position}
                 </p>
               ))}
-              <CardDescription className="py-3 text-muted-foreground">
+              <CardDescription className="py-3 text-muted-foreground text-xs">
                 {job.description}
               </CardDescription>
               <CardFooter className="p-0 flex flex-wrap gap-2">
                 {job.skills.map((skill, index) => (
-                  <Badge key={index}>{skill}</Badge>
+                  <Badge key={index} className="text-green-600 bg-green-950 border-green-950">{skill}</Badge>
                 ))}
               </CardFooter>
             </CardContent>
@@ -149,7 +81,7 @@ export default function ExpCard() {
       </>
       <div className="lg:px-12 mt-12">
         <a
-          href="mailto:alexander@meikopoulos.com"
+          href="mailto:makomborerichidzviva@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center font-medium leading-tight text-foreground group"

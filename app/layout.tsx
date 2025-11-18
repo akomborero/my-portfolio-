@@ -11,18 +11,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://meikopoulos.com",
   },
-  title: "Alexander Meikopoulos - Product Designer in AI, Web3, and Finance",
+  title: "Makomborero Chidziva - Product Designer in AI, Web3, and Finance",
   description:
-    "Alexander Meikopoulos is a Product designer, developer & founder.",
+    "Makomborero Chidziva is a Product designer, developer & founder.",
   keywords:
-    "Alexander Meikopoulos, Product Designer, AI, Web3, Finance, User Experience, UI/UX Design, Design Systems, Front-end Development, Decentralized Finance, DeFi, Swoop Exchange, Vela Exchange, Stealth AI Startup, Technology, Innovation, Human-Centered Design",
+    "Makomborero Chidziva, Product Designer, AI, Web3, Finance, User Experience, UI/UX Design, Design Systems, Front-end Development, Decentralized Finance, DeFi, Swoop Exchange, Vela Exchange, Stealth AI Startup, Technology, Innovation, Human-Centered Design",
   openGraph: {
     locale: "en_US",
-    siteName: "Alexander Meikopoulos",
+    siteName: "Makomborero Chidziva",
     type: "website",
-    title: "Alexander Meikopoulos",
+    title: "Makomborero Chidziva",
     description:
-      "Alexander Meikopoulos is a Product designer, developer & founder.",
+      "Makomborero Chidziva is a Product designer, developer & founder.",
     url: "https://meikopoulos.com",
     images: [
       {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alexander Meikopoulos",
+    title: "Makomborero Chidziva",
   },
 };
 

@@ -73,14 +73,54 @@ const jobProjects = [
     ],
     link: "https://app.mtopswap.com",
   },
+  
+ 
   {
-    imagePath: "/meikopoulos.com_PC.png",
-    title: "meikopoulos.com",
-    description:
-      "The portfolio webpage you are looking at right now. Based on Brittany Chiang's website (they awesome). Coded in Visual Studio Code.",
-    skills: ["Typescript", "JavaScript", "Tailwind CSS", "Vercel"],
-    link: "https://github.com/0xAlexander/my-website",
+    imagePath: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80",
+    title: "Educational App (In Progress)",
+    description: "An ongoing project to build an educational mobile app using React Native. The current phase focuses on the user authentication system, featuring a polished login and sign-up flow. This work highlights my skills in front-end development, responsive design, and navigation with expo-router.",
+    skills: ["ReactNative", "Typescript", "Fullstack"],
+    link: "#",
   },
+  {
+    imagePath: "/vela.avif",
+    title: "Monecuer Company Website",
+    description: "Designed and developed a professional, responsive website for a company to showcase services, improve user engagement, and enhance online presence.",
+    skills: ["Next.js", "Tailwind CSS", "Node.js"],
+    link: "https://monecuer.vercel.app/",
+  },
+  {
+    imagePath: "https://i.pinimg.com/736x/6c/ae/f9/6caef9dd8fae6216ff47e4cdfab7f254.jpg",
+    title: "Wedding Planner",
+    description: "An all-in-one platform designed to simplify wedding planning, from guest list management and budget tracking to vendor coordination.",
+    skills: ["Next.js","Node.js", "Firebase", "Tailwind CSS"],
+    link: "https://wedding-planner-iota-ebon.vercel.app/",
+    imageWidth: 200,
+    imageHeight: 150,
+  },
+  {
+    imagePath: "https://i.pinimg.com/736x/d7/9e/65/d79e65ae30f714c147e9e8a0e5ad26ce.jpg",
+    title: "SnapEvent",
+    description: "A dynamic event management platform for seamless planning, promotion, and execution of events.",
+    skills: ["React", "Node.js", "CSS", " PostgreSQL"],
+    link: "https://snap-event-henna.vercel.app/event-gallery/3c020fe2-37c3-4463-98a5-be1e35e319bd",
+    imageWidth: 200,
+    imageHeight: 150,
+  },
+  {
+    imagePath: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?fit=crop&w=400&q=80",
+    title: "Payslip Generator",
+    description: "An app to generate professional payslips instantly from employee data. Export as PDF or email directly.",
+    skills: ["Python", "Pandas", "PDFKit"],
+    link: "https://payslip-generator-akomborero.vercel.app/",
+  },
+  {
+    imagePath: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80",
+    title: "WebScraper",
+    description: "Fetch, parse, and analyze website data automatically for reporting and research purposes.",
+    skills: ["Python", "BeautifulSoup", "Requests"],
+    link: "#",
+  }
 ];
 
 export default function Projects() {
@@ -91,6 +131,7 @@ export default function Projects() {
           Projects
         </h2>
       </div>
+     
       <>
         {jobProjects.map((project, index) => (
           <a
@@ -105,23 +146,23 @@ export default function Projects() {
                 <Image
                   src={project.imagePath}
                   alt={`Screenshot of ${project.title}`}
-                  width={1920}
-                  height={1080}
+                  width={project.imageWidth || 1920}
+                  height={project.imageHeight || 1080}
                   priority
                   className="bg-[#141414] mt-2 border border-muted-foreground rounded-[0.5rem]"
                 />
               </CardHeader>
               <CardContent className="flex flex-col p-0 w-full lg:w-2/3">
-                <p className="text-primary font-bold">
+                <p className="text-primary font-bold text-sm">
                   {project.title}{" "}
-                  <MoveUpRight className="ml-1 inline-block h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
+                  <MoveUpRight className="ml-1 inline-block h-4 w-4 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
                 </p>
-                <CardDescription className="py-3 text-muted-foreground">
+                <CardDescription className="py-3 text-muted-foreground text-xs">
                   {project.description}
                 </CardDescription>
                 <CardFooter className="p-0 flex flex-wrap gap-2">
                   {project.skills.map((skill, index) => (
-                    <Badge key={index}>{skill}</Badge>
+                    <Badge key={index} className="text-green-600 bg-green-950 border-green-950">{skill}</Badge>
                   ))}
                 </CardFooter>
               </CardContent>

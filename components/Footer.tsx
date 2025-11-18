@@ -4,15 +4,7 @@ export default function Footer() {
   return (
     <section>
       <div className="flex flex-col gap-4 lg:px-6 mt-16">
-        <p className="text-sm text-start text-muted-foreground">
-          Based on{" "}
-          <a className="text-foreground" href="https://brittanychiang.com">
-            Brittany Chiang&#39;s website
-          </a>{" "}
-          (they awesome). Coded in{" "}
-          <a className="text-foreground" href="https://code.visualstudio.com/">
-            Visual Studio Code.
-          </a>{" "}
+        <p className="text-xs text-start text-muted-foreground">
           Built with{" "}
           <a className="text-foreground" href="https://nextjs.org/">
             Next.js
