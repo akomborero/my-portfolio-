@@ -15,7 +15,7 @@ const jobProjects = [
     imagePath: "/vela.avif",
     title: "Vela Exchange - Product Design",
     description:
-      "Led a team of 4 designers, implementing design systems and processes to launch flagship features like Duels, Accounts, Loyalty Tiers, and Notification Tray and System.",
+      " implementing design systems and processes to launch flagship features like Duels, Accounts, Loyalty Tiers, and Notification Tray and System.",
     skills: [
       "Product Design",
       "UI/UX Design",
@@ -75,13 +75,7 @@ const jobProjects = [
   },
   
  
-  {
-    imagePath: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80",
-    title: "Educational App (In Progress)",
-    description: "An ongoing project to build an educational mobile app using React Native. The current phase focuses on the user authentication system, featuring a polished login and sign-up flow. This work highlights my skills in front-end development, responsive design, and navigation with expo-router.",
-    skills: ["ReactNative", "Typescript", "Fullstack"],
-    link: "#",
-  },
+ 
   {
     imagePath: "/vela.avif",
     title: "Monecuer Company Website",
