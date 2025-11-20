@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "Makomborero Chidziva is a Product designer, developer & founder.",
   keywords:
-    "Makomborero Chidziva, Product Designer, AI, Web3, Finance, User Experience, UI/UX Design, Design Systems, Front-end Development, Decentralized Finance, DeFi, Swoop Exchange, Vela Exchange, Stealth AI Startup, Technology, Innovation, Human-Centered Design",
+    "Makomborero Chidziva, Software Developer, AI, Web Developer, Technology, Innovation",
   openGraph: {
     locale: "en_US",
     siteName: "Makomborero Chidziva",
