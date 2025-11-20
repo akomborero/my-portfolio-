@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://meikopoulos.com",
   },
-  title: "Makomborero Chidziva - Product Designer in AI, Web3, and Finance",
+  title: "Makomborero Chidziva - Software engineer, Software Developer, AI",
   description:
-    "Makomborero Chidziva is a Product designer, developer & founder.",
+    "Makomborero Chidziva is a Software engineer, developer & Innovative.",
   keywords:
     "Makomborero Chidziva, Software Developer, AI, Web Developer, Technology, Innovation",
   openGraph: {
