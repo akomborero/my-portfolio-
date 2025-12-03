@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Github, Linkedin, Instagram, Mail } from "lucide-react";
-import { ModeToggle } from "./ui/toggle-mode";
 import useActiveSection from "@/hooks/useActiveSection";
 
 type NavItem = {
@@ -109,7 +108,6 @@ export default function Nav() {
             <Mail className="h-[1.2rem] w-[1.2rem]" />
           </a>
         </Button>
-        <ModeToggle />
       </ul>
     </header>
   );

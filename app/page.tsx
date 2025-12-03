@@ -3,6 +3,7 @@ import Head from "next/head";
 import Nav from "@/components/Nav";
 import ExpCard from "@/components/ExpCards";
 import Projects from "@/components/Projects";
+import Others from "@/components/Others";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 import { useEffect, useRef } from "react";
@@ -44,6 +45,7 @@ export default function Home() {
             <About />
             <ExpCard />
             <Projects />
+            <Others />
             <Footer />
           </main>
         </div>
