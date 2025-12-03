@@ -1,5 +1,42 @@
 export const jobProjects = [
   {
+    imagePath: "/mone.png",
+    title: "Monecuer Company Website",
+    description: "Designed and developed a professional, responsive website for a company to showcase services, improve user engagement, and enhance online presence.",
+    skills: ["Next.js", "Tailwind CSS", "Node.js"],
+    link: "https://monecuer.vercel.app/",
+  },
+   {
+    imagePath: "/swoop-og-banner.webp",
+    title: "Swoop Exchange - Landing Page",
+    description:
+      "Swoop's landing page highlights the platform's use cases and solutions. Swoop Exchange is a Meta-DEX Aggregator that automatically sources, ranks and routes quotes from the best DEX Aggregators and Bridges, ensuring the best prices for on-chain and cross-chain swaps. Swoop Exchange has achieved millions in USD volume and currently has around 4000 monthly users with 0 paid marketing.",
+    skills: [
+      "Next.js",
+      "Framer",
+      "Shadcn/ui",
+      "Typescript",
+      "JavaScript",
+      "Vercel",
+      "Figma",
+    ],
+    link: "https://swoop.exchange",
+  },
+   {
+    imagePath: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80",
+    title: "WebScraper",
+    description: "Fetch, parse, and analyze website data automatically for reporting and research purposes.",
+    skills: ["Python", "BeautifulSoup", "Requests"],
+    link: "#",
+  },
+  {
+    imagePath: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?fit=crop&w=400&q=80",
+    title: "Payslip Generator",
+    description: "An app to generate professional payslips instantly from employee data. Export as PDF or email directly.",
+    skills: ["Python", "Pandas", "PDFKit"],
+    link: "https://payslip-generator-akomborero.vercel.app/",
+  },
+  {
     imagePath: "/vela.avif",
     title: "Vela Exchange - Product Design",
     description:
@@ -29,22 +66,7 @@ export const jobProjects = [
     ],
     link: "https://l3x.com",
   },
-  {
-    imagePath: "/swoop-og-banner.webp",
-    title: "Swoop Exchange - Landing Page",
-    description:
-      "Swoop's landing page highlights the platform's use cases and solutions. Swoop Exchange is a Meta-DEX Aggregator that automatically sources, ranks and routes quotes from the best DEX Aggregators and Bridges, ensuring the best prices for on-chain and cross-chain swaps. Swoop Exchange has achieved millions in USD volume and currently has around 4000 monthly users with 0 paid marketing.",
-    skills: [
-      "Next.js",
-      "Framer",
-      "Shadcn/ui",
-      "Typescript",
-      "JavaScript",
-      "Vercel",
-      "Figma",
-    ],
-    link: "https://swoop.exchange",
-  },
+ 
   {
     imagePath: "/app-front-1.png",
     title: "Swoop Exchange - Application Design",
@@ -86,18 +108,6 @@ export const jobProjects = [
     imageWidth: 200,
     imageHeight: 150,
   },
-  {
-    imagePath: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?fit=crop&w=400&q=80",
-    title: "Payslip Generator",
-    description: "An app to generate professional payslips instantly from employee data. Export as PDF or email directly.",
-    skills: ["Python", "Pandas", "PDFKit"],
-    link: "https://payslip-generator-akomborero.vercel.app/",
-  },
-  {
-    imagePath: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80",
-    title: "WebScraper",
-    description: "Fetch, parse, and analyze website data automatically for reporting and research purposes.",
-    skills: ["Python", "BeautifulSoup", "Requests"],
-    link: "#",
-  }
+  
+ 
 ];
