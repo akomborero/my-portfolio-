@@ -43,7 +43,7 @@ const jobPositions = [
     place: "Primary Schools",
     previousPositions: [""],
     description:
-      "I volunteered to help primary school children in the Mbare and Warren Park areas by teaching them basic ICT skills and Scratch programming. These children had no access to laptops or other resources to learn technology. My goal was to provide them with foundational knowledge that could spark their interest in tech and open up future opportunities",
+      "I volunteered to help primary school children in the Dzivarasekwa area by teaching them basic ICT skills and Scratch programming. These children had no access to laptops or other resources to learn technology. My goal was to provide them with foundational knowledge that could spark their interest in tech and open up future opportunities",
        skills: [
      "Teaching",
      "Mentorship",
