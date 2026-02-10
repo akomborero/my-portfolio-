@@ -13,7 +13,7 @@ import { MoveRight } from "lucide-react";
 const jobPositions = [
 
   {
-    timeline: "2025 — PRESENT",
+    timeline: " SEP 2025 — PRESENT",
     currentPosition: "SOFTWARE ENGENEER",
     place: "ZOMAC DIGITAL",
     previousPositions: [""],

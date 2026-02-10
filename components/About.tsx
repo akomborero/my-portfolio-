@@ -10,26 +10,38 @@ export default function About() {
         </h2>
       </div>
       <div className="flex flex-col gap-4">
-        <p className="text-start text-sm text-muted-foreground lg:px-6">
-          I’m a <span className="text-white">full-stack developer</span> passionate about creating <span className="text-white">clean</span>,{' '}
-          <span className="text-white">accessible</span>, and high-performing digital experiences. I enjoy blending thoughtful design with solid engineering to build products that feel intuitive, reliable, and enjoyable to use.
-        </p>
+  <p className="text-start text-sm text-muted-foreground lg:px-6">
+    I’m a <span className="text-white">mobile app developer</span> passionate about building 
+    <span className="text-white"> reliable</span>,{' '}
+    <span className="text-white">user-friendly</span>, and high-performing digital solutions. 
+    My main focus is creating mobile applications using 
+    <span className="text-white"> Flutter</span> and modern web systems using 
+    <span className="text-white"> React</span>.
+  </p>
 
-        <p className="text-start text-sm text-muted-foreground lg:px-6">
-          I focus on delivering seamless{' '}
-          <span className="text-white">user experiences</span> while ensuring every part of a product — from frontend to backend — is crafted with care and precision.
-        </p>
+  <p className="text-start text-sm text-muted-foreground lg:px-6">
+    I have worked at <span className="text-white">Zomac Digital</span>, where I developed 
+    real-world projects, mainly focusing on 
+    <span className="text-white"> mobile applications</span> and 
+    <span className="text-white"> web-based systems</span> for clients.
+  </p>
 
-        <p className="text-start text-sm text-muted-foreground lg:px-6">
-          Throughout my journey, I’ve worked in collaborative environments that have strengthened my approach to{' '}
-          <span className="text-white">problem-solving</span>, product thinking, and user-centered development. I value clean architecture, clarity, and building products that genuinely help people.
-        </p>
+  <p className="text-start text-sm text-muted-foreground lg:px-6">
+    Outside of my professional work, I have independently built 
+    <span className="text-white"> 9 business systems</span> that are currently being used 
+    by <span className="text-white">9 different companies</span>, including 
+    <span className="text-white"> two in South Africa</span>. 
+    This hands-on experience has strengthened my problem-solving skills 
+    and ability to deliver practical, production-ready solutions.
+  </p>
 
-        <p className="text-start text-sm text-muted-foreground lg:px-6">
-          Outside of development, I spend my time learning, exploring{' '}
-          <span className="text-white">creativity</span>, and improving myself both personally and professionally. I enjoy staying curious and continuously leveling up in everything I do.
-        </p>
-      </div>
+  <p className="text-start text-sm text-muted-foreground lg:px-6">
+    I enjoy solving real-world problems through technology, continuously 
+    improving my skills, and building products that genuinely help people 
+    and businesses grow.
+  </p>
+</div>
+
     </section>
   );
 }

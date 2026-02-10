@@ -7,20 +7,20 @@ export const jobProjects = [
     link: "https://monecuer.vercel.app/",
   },
    {
-    imagePath: "/swoop-og-banner.webp",
-    title: "Swoop Exchange - Landing Page",
+    imagePath: "/quality",
+    title: "Quality cars",
     description:
-      "Swoop's landing page highlights the platform's use cases and solutions. Swoop Exchange is a Meta-DEX Aggregator that automatically sources, ranks and routes quotes from the best DEX Aggregators and Bridges, ensuring the best prices for on-chain and cross-chain swaps. Swoop Exchange has achieved millions in USD volume and currently has around 4000 monthly users with 0 paid marketing.",
+     'Created a carsale website for a south African Based Company',
     skills: [
       "Next.js",
       "Framer",
-      "Shadcn/ui",
+      'SQL',
       "Typescript",
       "JavaScript",
       "Vercel",
       "Figma",
     ],
-    link: "https://swoop.exchange",
+    link: "https://quality-import.vercel.app/",
   },
    {
     imagePath: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=400&q=80",
