@@ -7,7 +7,7 @@ export const jobProjects = [
     link: "https://monecuer.vercel.app/",
   },
    {
-    imagePath: "/quality",
+    imagePath: "/quality.png",
     title: "Quality cars",
     description:
      'Created a carsale website for a south African Based Company',
