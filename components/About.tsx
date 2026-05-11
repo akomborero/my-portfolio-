@@ -11,11 +11,11 @@ export default function About() {
       </div>
       <div className="flex flex-col gap-4">
   <p className="text-start text-sm text-muted-foreground lg:px-6">
-    I’m a <span className="text-white">mobile app developer</span> passionate about building 
+    I’m a <span className="text-white">software developer</span> passionate about building 
     <span className="text-white"> reliable</span>,{' '}
     <span className="text-white">user-friendly</span>, and high-performing digital solutions. 
     My main focus is creating mobile applications using 
-    <span className="text-white"> Flutter</span> and modern web systems using 
+    <span className="text-white"> Flutter and react native</span> and modern web systems using 
     <span className="text-white"> React</span>.
   </p>
 
@@ -30,7 +30,7 @@ export default function About() {
     Outside of my professional work, I have independently built 
     <span className="text-white"> 9 business systems</span> that are currently being used 
     by <span className="text-white">9 different companies</span>, including 
-    <span className="text-white"> two in South Africa</span>. 
+    <span className="text-white"> 1 in South Africa</span>. 
     This hands-on experience has strengthened my problem-solving skills 
     and ability to deliver practical, production-ready solutions.
   </p>

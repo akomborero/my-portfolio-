@@ -11,9 +11,31 @@ import { Badge } from "@/components/ui/badge";
 import { MoveRight } from "lucide-react";
 
 const jobPositions = [
+ {
+    timeline: " FEB 2026 — PRESENT ",
+    currentPosition: "SOFTWARE ENGENEER",
+    place: "Swiftcore solutions",
+    previousPositions: [""],
+    description:
+      "Through SwiftCore Solutions, I transform complex business logic into elegant, high-performance digital products. My focus is where cutting-edge AI meets minimalist design—creating tools that aren't just functional, but cinematic.",
+      
+    skills: [
+      "JavaScript",
+      "Product Design",
+      "UI/UX Design",
+      "Design Systems",
+      "Design Strategy",
+      
+      "React",
+      "Postman",
+      
+   
+      "API",
+    ],
 
+  },
   {
-    timeline: " SEP 2025 — PRESENT",
+    timeline: " SEP 2025 — PRESENT - onsite",
     currentPosition: "SOFTWARE ENGENEER",
     place: "ZOMAC DIGITAL",
     previousPositions: [""],
@@ -38,7 +60,7 @@ const jobPositions = [
 
   
   {
-    timeline: "JAN 2025 — OCT 2025",
+    timeline: "JAN 2025 — OCT 2025 - onsite",
     currentPosition: "Youth Coding Volunteer",
     place: "Primary Schools",
     previousPositions: [""],
