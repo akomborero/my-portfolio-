@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Makomborero Chidziva",
     description:
-      "Makomborero Chidziva is a Product designer, developer & founder.",
+      "Makomborero Chidziva is a  developer & founder.",
     url: "https://meikopoulos.com",
     images: [
       {
